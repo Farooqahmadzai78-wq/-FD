@@ -1,0 +1,2385 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Lateef&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Nur — design system.
+ * Widget colour (dark -> light gradient) and page background colour are two
+ * independent, user-controlled tokens set as data attributes on <html>.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-brand: var(--w-from);
+  --color-brand-light: var(--w-to);
+  --color-brand-foreground: var(--w-fg);
+  --color-surface: var(--surface);
+  --color-halal: var(--halal);
+  --color-haram: var(--haram);
+  --color-doubt: var(--doubt);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Scheherazade New", serif;
+}
+
+:root {
+  --radius: 1.125rem;
+
+  /* widget gradient — overridden by [data-widget] or [data-widget-theme] */
+  --w-from: oklch(0.53 0.16 45);
+  --w-to: oklch(0.78 0.16 65);
+  --w-fg: oklch(0.99 0.01 80);
+
+  /* Standard UI Colors - Fully Opaque White in Light Mode */
+  --background: oklch(0.985 0.005 90);
+  --foreground: oklch(0.18 0.02 60);
+  --surface: #ffffff;
+
+  --card: #ffffff;
+  --card-foreground: oklch(0.18 0.02 60);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.18 0.02 60);
+
+  /* Interface Primary - Decoupled from widget theme */
+  --primary: oklch(0.22 0.02 60);
+  --primary-foreground: #ffffff;
+
+  --secondary: oklch(0.96 0.008 70);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.96 0.008 70);
+  --muted-foreground: oklch(0.52 0.02 60);
+  --accent: oklch(0.95 0.01 70);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.5 0.02 60 / 14%);
+  --input: oklch(0.5 0.02 60 / 18%);
+  --ring: oklch(0.22 0.02 60);
+
+  --halal: oklch(0.58 0.15 152);
+  --haram: oklch(0.57 0.21 27);
+  --doubt: oklch(0.72 0.15 80);
+
+  /* Bottom-nav active label */
+  --nav-active-text: color-mix(in oklab, oklch(0.72 0.16 85) 82%, var(--w-from));
+
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --shadow-soft: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+  --shadow-widget: 0 14px 34px -14px color-mix(in oklab, var(--w-from) 55%, transparent);
+}
+
+/* ---------- Widget colour presets ---------- */
+[data-widget="orange"] {
+  --w-from: #f97316;
+  --w-to: #fb923c;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+}
+[data-widget="blue"] {
+  --w-from: #0396ff;
+  --w-to: #3b82f6;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #0396ff 0%, #3b82f6 100%);
+}
+[data-widget="red"] {
+  --w-from: #ea5455;
+  --w-to: #ef4444;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ea5455 0%, #ef4444 100%);
+}
+[data-widget="green"] {
+  --w-from: #28c76f;
+  --w-to: #10b981;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #28c76f 0%, #10b981 100%);
+}
+[data-widget="brown"] {
+  --w-from: #d97706;
+  --w-to: #f59e0b;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+}
+[data-widget="yellow"] {
+  --w-from: #f8d800;
+  --w-to: #facc15;
+  --w-fg: #1e1e24;
+  --w-fill: linear-gradient(135deg, #f8d800 0%, #facc15 100%);
+}
+[data-widget="black"] {
+  --w-from: #18181b;
+  --w-to: #27272a;
+  --w-fg: #f4f4f5;
+  --w-fill: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+}
+[data-widget="purple"] {
+  --w-from: #9f44d3;
+  --w-to: #a855f7;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #9f44d3 0%, #a855f7 100%);
+}
+[data-widget="teal"] {
+  --w-from: #06b6d4;
+  --w-to: #14b8a6;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);
+}
+[data-widget="pink"] {
+  --w-from: #ec4899;
+  --w-to: #f472b6;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+}
+[data-widget="indigo"] {
+  --w-from: #6366f1;
+  --w-to: #818cf8;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+}
+[data-widget="emerald"] {
+  --w-from: #059669;
+  --w-to: #34d399;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #059669 0%, #34d399 100%);
+}
+
+/* --- Multi-colour gradient presets --- */
+[data-widget="sunset"] {
+  --w-from: oklch(0.55 0.2 25);
+  --w-to: oklch(0.85 0.15 85);
+  --w-fg: oklch(0.99 0.01 60);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.48 0.2 12) 0%,
+    oklch(0.66 0.2 45) 50%,
+    oklch(0.87 0.15 88) 100%
+  );
+}
+[data-widget="ocean"] {
+  --w-from: oklch(0.36 0.14 260);
+  --w-to: oklch(0.78 0.11 195);
+  --w-fg: oklch(0.99 0.005 220);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.32 0.15 268) 0%,
+    oklch(0.55 0.13 230) 52%,
+    oklch(0.8 0.11 190) 100%
+  );
+}
+[data-widget="aurora"] {
+  --w-from: oklch(0.42 0.15 300);
+  --w-to: oklch(0.8 0.13 165);
+  --w-fg: oklch(0.99 0.005 280);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.4 0.16 305) 0%,
+    oklch(0.58 0.15 250) 45%,
+    oklch(0.8 0.14 168) 100%
+  );
+}
+[data-widget="peach"] {
+  --w-from: oklch(0.66 0.16 30);
+  --w-to: oklch(0.9 0.09 75);
+  --w-fg: oklch(0.28 0.05 40);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.66 0.17 20) 0%,
+    oklch(0.8 0.13 45) 50%,
+    oklch(0.92 0.08 82) 100%
+  );
+}
+[data-widget="berry"] {
+  --w-from: oklch(0.35 0.16 340);
+  --w-to: oklch(0.68 0.18 12);
+  --w-fg: oklch(0.99 0.005 340);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.3 0.14 320) 0%,
+    oklch(0.46 0.19 350) 50%,
+    oklch(0.7 0.18 15) 100%
+  );
+}
+[data-widget="lagoon"] {
+  --w-from: oklch(0.42 0.11 185);
+  --w-to: oklch(0.85 0.13 130);
+  --w-fg: oklch(0.99 0.005 180);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.4 0.12 210) 0%,
+    oklch(0.62 0.12 175) 50%,
+    oklch(0.86 0.14 135) 100%
+  );
+}
+[data-widget="gold"] {
+  --w-from: oklch(0.5 0.11 70);
+  --w-to: oklch(0.92 0.14 100);
+  --w-fg: oklch(0.25 0.05 70);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.45 0.1 55) 0%,
+    oklch(0.72 0.14 82) 50%,
+    oklch(0.93 0.14 102) 100%
+  );
+}
+[data-widget="midnight"] {
+  --w-from: oklch(0.18 0.05 275);
+  --w-to: oklch(0.5 0.14 300);
+  --w-fg: oklch(0.98 0.005 280);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.16 0.05 265) 0%,
+    oklch(0.3 0.11 285) 50%,
+    oklch(0.52 0.15 320) 100%
+  );
+}
+[data-widget="candy"] {
+  --w-from: oklch(0.6 0.19 350);
+  --w-to: oklch(0.85 0.12 250);
+  --w-fg: oklch(0.99 0.005 330);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.62 0.2 355) 0%,
+    oklch(0.72 0.16 305) 50%,
+    oklch(0.86 0.12 245) 100%
+  );
+}
+[data-widget="forest"] {
+  --w-from: oklch(0.3 0.08 150);
+  --w-to: oklch(0.76 0.15 130);
+  --w-fg: oklch(0.99 0.005 150);
+  --w-grad: linear-gradient(
+    150deg,
+    oklch(0.28 0.08 170) 0%,
+    oklch(0.46 0.12 150) 50%,
+    oklch(0.78 0.15 128) 100%
+  );
+}
+
+/* ---------- Page background presets ---------- */
+[data-bg="white"] {
+  --background: oklch(0.995 0.003 90);
+  --foreground: oklch(0.2 0.02 60);
+}
+[data-bg="lightblue"] {
+  --background: oklch(0.965 0.025 235);
+  --foreground: oklch(0.22 0.04 250);
+}
+[data-bg="lightorange"] {
+  --background: oklch(0.968 0.03 72);
+  --foreground: oklch(0.24 0.04 55);
+}
+[data-bg="red"] {
+  --background: oklch(0.945 0.04 25);
+  --foreground: oklch(0.24 0.06 25);
+}
+[data-bg="green"] {
+  --background: oklch(0.955 0.035 155);
+  --foreground: oklch(0.22 0.05 155);
+}
+[data-bg="cream"] {
+  --background: oklch(0.975 0.025 92);
+  --foreground: oklch(0.24 0.03 70);
+}
+[data-bg="sand"] {
+  --background: oklch(0.945 0.035 82);
+  --foreground: oklch(0.25 0.04 65);
+}
+[data-bg="mint"] {
+  --background: oklch(0.96 0.04 172);
+  --foreground: oklch(0.22 0.05 170);
+}
+[data-bg="lavender"] {
+  --background: oklch(0.955 0.03 300);
+  --foreground: oklch(0.24 0.05 300);
+}
+[data-bg="rose"] {
+  --background: oklch(0.955 0.03 350);
+  --foreground: oklch(0.25 0.05 350);
+}
+[data-bg="sky"] {
+  --background: oklch(0.96 0.035 215);
+  --foreground: oklch(0.22 0.05 230);
+}
+[data-bg="graphite"] {
+  --background: oklch(0.28 0.008 260);
+  --foreground: oklch(0.97 0.003 250);
+}
+[data-bg="dawn"] {
+  --background: oklch(0.96 0.03 60);
+  --foreground: oklch(0.24 0.04 40);
+  --bg-image: linear-gradient(
+    170deg,
+    oklch(0.95 0.05 30) 0%,
+    oklch(0.97 0.04 70) 45%,
+    oklch(0.97 0.03 200) 100%
+  );
+}
+[data-bg="dusk"] {
+  --background: oklch(0.94 0.03 300);
+  --foreground: oklch(0.24 0.05 290);
+  --bg-image: linear-gradient(
+    170deg,
+    oklch(0.93 0.05 320) 0%,
+    oklch(0.95 0.04 280) 50%,
+    oklch(0.96 0.03 235) 100%
+  );
+}
+[data-bg="meadow"] {
+  --background: oklch(0.96 0.03 150);
+  --foreground: oklch(0.23 0.05 155);
+  --bg-image: linear-gradient(
+    170deg,
+    oklch(0.96 0.05 160) 0%,
+    oklch(0.97 0.04 130) 50%,
+    oklch(0.98 0.03 95) 100%
+  );
+}
+[data-bg="sorbet"] {
+  --background: oklch(0.96 0.03 20);
+  --foreground: oklch(0.24 0.05 20);
+  --bg-image: linear-gradient(
+    170deg,
+    oklch(0.95 0.05 355) 0%,
+    oklch(0.96 0.05 40) 50%,
+    oklch(0.97 0.05 90) 100%
+  );
+}
+[data-bg="nightsky"] {
+  --background: oklch(0.18 0.03 275);
+  --foreground: oklch(0.97 0.004 250);
+  --bg-image: linear-gradient(
+    170deg,
+    oklch(0.16 0.04 285) 0%,
+    oklch(0.2 0.05 260) 55%,
+    oklch(0.26 0.06 320) 100%
+  );
+}
+[data-bg="black"] {
+  --background: oklch(0.15 0.008 260);
+  --foreground: oklch(0.97 0.003 250);
+}
+
+/* Dark mode always wins over the background preset */
+.dark {
+  --background: #09090b;
+  --foreground: #f8fafc;
+  --surface: #18181b;
+  --card: #18181b;
+  --card-foreground: #f8fafc;
+  --popover: #18181b;
+  --popover-foreground: #f8fafc;
+  --primary: #f8fafc;
+  --primary-foreground: #09090b;
+  --secondary: #27272a;
+  --secondary-foreground: #f8fafc;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #f8fafc;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.16);
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    background-color: transparent !important;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+/* Icon Size Settings */
+[data-icon-size="small"] svg {
+  transform: scale(0.85);
+  transition: transform 0.2s ease;
+}
+[data-icon-size="normal"] svg {
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+[data-icon-size="large"] svg {
+  transform: scale(1.18);
+  transition: transform 0.2s ease;
+}
+
+@utility widget {
+  background-image: var(--w-fill, linear-gradient(135deg, var(--w-from) 0%, var(--w-to) 100%));
+  color: var(--w-fg);
+  box-shadow: var(--shadow-widget);
+  border-radius: var(--radius-3xl);
+  position: relative;
+  overflow: hidden;
+}
+
+@utility widget-soft {
+  background-image: linear-gradient(
+    150deg,
+    color-mix(in oklab, var(--w-from) 16%, transparent) 0%,
+    color-mix(in oklab, var(--w-to) 22%, transparent) 100%
+  );
+  border: 1px solid color-mix(in oklab, var(--w-to) 30%, transparent);
+  border-radius: var(--radius-3xl);
+}
+
+@utility glass {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(120deg, var(--w-from), var(--w-to));
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes nur-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes nur-pop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes nur-shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+@keyframes nur-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+@keyframes nur-open-book {
+  0% {
+    transform: perspective(900px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(900px) rotateY(-22deg);
+  }
+}
+
+@keyframes logo-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-logo-appear {
+  animation: logo-appear 550ms ease-out forwards;
+}
+
+@keyframes nur-logo-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 2px 6px rgba(180, 83, 9, 0.3));
+  }
+  50% {
+    transform: scale(1.08) rotate(2deg);
+    filter: drop-shadow(0 6px 16px rgba(217, 119, 6, 0.55));
+  }
+}
+
+.anim-logo {
+  animation: nur-logo-pulse 3.2s ease-in-out infinite;
+}
+
+/* Splash Crescent & Celestial Animations */
+@keyframes splash-particle {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.5);
+  }
+  35% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-38px) scale(1.3);
+  }
+}
+
+.animate-splash-particle {
+  animation: splash-particle 4.5s linear infinite;
+}
+
+@keyframes splash-float-rotate {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(2.8deg);
+  }
+}
+
+.animate-splash-float {
+  animation: splash-float-rotate 5.8s ease-in-out infinite;
+}
+
+@keyframes splash-glow-breath {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.75;
+  }
+}
+
+.animate-splash-glow {
+  animation: splash-glow-breath 4.2s ease-in-out infinite;
+}
+
+@keyframes splash-sheen-slide {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+  }
+  40%,
+  100% {
+    transform: translateX(180%) rotate(25deg);
+  }
+}
+
+.animate-splash-sheen {
+  animation: splash-sheen-slide 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-splash-particle,
+  .animate-splash-float,
+  .animate-splash-glow,
+  .animate-splash-sheen {
+    animation: none !important;
+  }
+}
+
+.anim-float {
+  animation: nur-float 5s ease-in-out infinite;
+}
+.anim-pop {
+  animation: nur-pop 0.15s ease-out both;
+}
+.anim-ring {
+  animation: nur-ring 1.6s ease-out infinite;
+}
+.anim-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 32%), transparent);
+  animation: nur-shine 2.4s ease-in-out infinite;
+}
+.anim-open-book {
+  animation: nur-open-book 0.7s ease-out forwards;
+}
+
+/* ---------- Harmonised gradient + glass card ---------- */
+@utility widget-glass {
+  background-image:
+    linear-gradient(160deg, color-mix(in oklab, oklch(1 0 0) 22%, transparent) 0%, transparent 55%),
+    linear-gradient(150deg, var(--w-from) 0%, var(--w-to) 100%);
+  color: var(--w-fg);
+  border: 1px solid color-mix(in oklab, oklch(1 0 0) 28%, transparent);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-widget);
+  backdrop-filter: blur(14px) saturate(140%);
+  position: relative;
+  overflow: hidden;
+}
+
+@utility widget-badge {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background-color: color-mix(in oklab, oklch(1 0 0) 22%, transparent);
+  border: 1px solid color-mix(in oklab, oklch(1 0 0) 30%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--w-fg);
+}
+
+/* ---------- V3 animations ---------- */
+@keyframes nur-greet {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+@keyframes nur-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--halal) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 12px color-mix(in oklab, var(--halal) 0%, transparent);
+  }
+}
+.anim-greet {
+  animation: nur-greet 3s ease-in-out infinite;
+}
+.anim-ring-glow {
+  animation: nur-glow 1.4s ease-out infinite;
+}
+
+/* ---------- V5: animated multicolour border (mosque map) ---------- */
+@keyframes nur-border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.anim-border-flow {
+  background-image: linear-gradient(
+    115deg,
+    #ff8a3d,
+    #ff3d77,
+    #7c4dff,
+    #2196f3,
+    #00c2a8,
+    #ffc107,
+    #ff8a3d
+  );
+  background-size: 320% 320%;
+  animation: nur-border-flow 9s linear infinite;
+}
+
+/* ---------- Animated image effect for invocation categories ---------- */
+@keyframes kenburns-slow {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+  50% {
+    transform: scale(1.12) translate(1%, 1.5%);
+  }
+  75% {
+    transform: scale(1.06) translate(1.5%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+.anim-kenburns {
+  animation: kenburns-slow 14s ease-in-out infinite alternate;
+}
+
+/* ==========================================================
+   NEW CUSTOMIZATION SYSTEM - WIDGET & BACKGROUND THEMES
+   ========================================================== */
+
+/* ---------- Widget Theme Dataset Bindings ---------- */
+:root {
+  --w-fill: linear-gradient(135deg, var(--w-from), var(--w-to));
+}
+
+[data-widget-theme="w-default"] {
+  --w-from: #ff0055;
+  --w-to: #ffbb00;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ff0055 0%, #7a00ff 33%, #00e5ff 66%, #ffbb00 100%);
+}
+[data-bg-theme="bg-default"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+[data-widget-theme="w-solid-bleu"] {
+  --w-from: #0396ff;
+  --w-to: #0396ff;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #0396ff, #0396ff);
+}
+[data-widget-theme="w-solid-rouge"] {
+  --w-from: #ea5455;
+  --w-to: #ea5455;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ea5455, #ea5455);
+}
+[data-widget-theme="w-solid-jaune"] {
+  --w-from: #f8d800;
+  --w-to: #f8d800;
+  --w-fg: #1e1e24;
+  --w-fill: linear-gradient(135deg, #f8d800, #f8d800);
+}
+[data-widget-theme="w-solid-vert"] {
+  --w-from: #28c76f;
+  --w-to: #28c76f;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #28c76f, #28c76f);
+}
+[data-widget-theme="w-solid-rose"] {
+  --w-from: #e2b0ff;
+  --w-to: #e2b0ff;
+  --w-fg: #2a0845;
+  --w-fill: linear-gradient(135deg, #e2b0ff, #e2b0ff);
+}
+[data-widget-theme="w-solid-orange"] {
+  --w-from: #f55555;
+  --w-to: #f55555;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #f55555, #f55555);
+}
+[data-widget-theme="w-solid-violet"] {
+  --w-from: #9f44d3;
+  --w-to: #9f44d3;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #9f44d3, #9f44d3);
+}
+[data-widget-theme="w-solid-blanc"] {
+  --w-from: #ffffff;
+  --w-to: #ffffff;
+  --w-fg: #18181b;
+  --w-fill: linear-gradient(135deg, #ffffff, #ffffff);
+}
+[data-widget-theme="w-solid-noir"] {
+  --w-from: #18181b;
+  --w-to: #18181b;
+  --w-fg: #f4f4f5;
+  --w-fill: linear-gradient(135deg, #18181b, #18181b);
+}
+
+[data-widget-theme="w-grad-menthe"] {
+  --w-from: #81fbb8;
+  --w-to: #28c76f;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #81fbb8, #28c76f);
+}
+[data-widget-theme="w-grad-lavande"] {
+  --w-from: #abdcff;
+  --w-to: #0396ff;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #abdcff, #0396ff);
+}
+[data-widget-theme="w-grad-peche"] {
+  --w-from: #fccf31;
+  --w-to: #f55555;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #fccf31, #f55555);
+}
+[data-widget-theme="w-grad-corail"] {
+  --w-from: #feb692;
+  --w-to: #ea5455;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #feb692, #ea5455);
+}
+[data-widget-theme="w-grad-cyan"] {
+  --w-from: #84fab0;
+  --w-to: #8fd3f4;
+  --w-fg: #0f172a;
+  --w-fill: linear-gradient(135deg, #84fab0, #8fd3f4);
+}
+[data-widget-theme="w-grad-ocean"] {
+  --w-from: #00c6ff;
+  --w-to: #0072ff;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+[data-widget-theme="w-grad-violet"] {
+  --w-from: #e2b0ff;
+  --w-to: #9f44d3;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #e2b0ff, #9f44d3);
+}
+[data-widget-theme="w-grad-magenta"] {
+  --w-from: #f355da;
+  --w-to: #6e0dd0;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #f355da, #6e0dd0);
+}
+[data-widget-theme="w-grad-teal"] {
+  --w-from: #30cfd0;
+  --w-to: #330867;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #30cfd0, #330867);
+}
+[data-widget-theme="w-grad-ardoise"] {
+  --w-from: #434343;
+  --w-to: #000000;
+  --w-fg: #f8fafc;
+  --w-fill: linear-gradient(135deg, #434343, #000000);
+}
+[data-widget-theme="w-grad-rose-crepuscule"] {
+  --w-from: #200122;
+  --w-to: #6f0000;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #200122, #6f0000);
+}
+[data-widget-theme="w-grad-vert-chartreuse"] {
+  --w-from: #11998e;
+  --w-to: #38ef7d;
+  --w-fg: #111827;
+  --w-fill: linear-gradient(135deg, #11998e, #38ef7d);
+}
+[data-widget-theme="w-grad-ambre-dore"] {
+  --w-from: #3a1c71;
+  --w-to: #ffaf7b;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%);
+}
+[data-widget-theme="w-grad-crepuscule-violet"] {
+  --w-from: #232526;
+  --w-to: #3a1c71;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #232526 0%, #414345 40%, #3a1c71 100%);
+}
+[data-widget-theme="w-grad-arc-en-ciel-luxe"] {
+  --w-from: #ff0055;
+  --w-to: #ffbb00;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ff0055 0%, #7a00ff 33%, #00e5ff 66%, #ffbb00 100%);
+}
+[data-widget-theme="w-grad-galaxie-mystique"] {
+  --w-from: #0d061f;
+  --w-to: #6b21a8;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #0d061f 0%, #311042 50%, #6b21a8 100%);
+}
+[data-widget-theme="w-grad-taches-rgb-sombres"] {
+  --w-from: #090d16;
+  --w-to: #311042;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #311042 100%);
+}
+
+[data-widget-theme="w-anim-aura-violet"] {
+  --w-from: #1e0533;
+  --w-to: #4c1d95;
+  --w-fg: #f3e8ff;
+  --w-fill: linear-gradient(135deg, #1e0533, #4c1d95, #6d28d9, #2e1065);
+}
+[data-widget-theme="w-anim-neon-magenta"] {
+  --w-from: #9333ea;
+  --w-to: #f43f5e;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #9333ea, #f43f5e, #c084fc, #e11d48);
+}
+[data-widget-theme="w-anim-flamme-ambree"] {
+  --w-from: #ea580c;
+  --w-to: #dc2626;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #ea580c, #dc2626, #f97316, #b91c1c);
+}
+[data-widget-theme="w-anim-ocean-cyan"] {
+  --w-from: #06b6d4;
+  --w-to: #8b5cf6;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6, #0284c7);
+}
+[data-widget-theme="w-anim-lueur-turquoise"] {
+  --w-from: #0284c7;
+  --w-to: #14b8a6;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #0284c7, #0d9488, #38bdf8, #0f766e);
+}
+[data-widget-theme="w-anim-eclat-fuchsia"] {
+  --w-from: #c084fc;
+  --w-to: #e879f9;
+  --w-fg: #2e1065;
+  --w-fill: linear-gradient(135deg, #c084fc, #e879f9, #a855f7, #f0abfc);
+}
+[data-widget-theme="w-anim-aurore-bipolaire"] {
+  --w-from: #6b21a8;
+  --w-to: #b91c1c;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #6b21a8, #b91c1c, #9333ea, #dc2626);
+}
+[data-widget-theme="w-anim-anneaux-lumiere"] {
+  --w-from: #581c87;
+  --w-to: #be185d;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #581c87, #be185d, #701a75, #9f1239);
+}
+[data-widget-theme="w-anim-emeraude-vivante"] {
+  --w-from: #022c22;
+  --w-to: #10b981;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #022c22, #064e3b, #10b981, #047857);
+}
+[data-widget-theme="w-anim-cosmos-etoile"] {
+  --w-from: #0f172a;
+  --w-to: #581c87;
+  --w-fg: #ffffff;
+  --w-fill: linear-gradient(135deg, #0f172a, #581c87, #1e1b4b, #3b0764);
+}
+
+/* Multi-stop Gradient Widget Rules */
+[data-widget-theme="w-grad-ambre-dore"] .widget,
+[data-widget-theme="w-grad-ambre-dore"] .widget-glass {
+  background-image: linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%) !important;
+}
+[data-widget-theme="w-grad-arc-en-ciel-luxe"] .widget,
+[data-widget-theme="w-grad-arc-en-ciel-luxe"] .widget-glass {
+  background-image: linear-gradient(
+    135deg,
+    #ff0055 0%,
+    #7a00ff 33%,
+    #00e5ff 66%,
+    #ffbb00 100%
+  ) !important;
+}
+[data-widget-theme="w-grad-taches-rgb-sombres"] .widget,
+[data-widget-theme="w-grad-taches-rgb-sombres"] .widget-glass {
+  background-image: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #311042 100%) !important;
+}
+
+/* Global Animated Theme Overrides for all widgets in the app */
+[data-widget-theme="w-anim-aura-violet"] .widget,
+[data-widget-theme="w-anim-aura-violet"] .widget-glass {
+  background: linear-gradient(135deg, #1e0533, #4c1d95, #6d28d9, #2e1065) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  color: #f3e8ff !important;
+}
+[data-widget-theme="w-anim-neon-magenta"] .widget,
+[data-widget-theme="w-anim-neon-magenta"] .widget-glass {
+  background: linear-gradient(135deg, #9333ea, #f43f5e, #c084fc, #e11d48) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 7s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-flamme-ambree"] .widget,
+[data-widget-theme="w-anim-flamme-ambree"] .widget-glass {
+  background: linear-gradient(135deg, #ea580c, #dc2626, #f97316, #b91c1c) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 6s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-ocean-cyan"] .widget,
+[data-widget-theme="w-anim-ocean-cyan"] .widget-glass {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6, #0284c7) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-lueur-turquoise"] .widget,
+[data-widget-theme="w-anim-lueur-turquoise"] .widget-glass {
+  background: linear-gradient(135deg, #0284c7, #0d9488, #38bdf8, #0f766e) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 9s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-eclat-fuchsia"] .widget,
+[data-widget-theme="w-anim-eclat-fuchsia"] .widget-glass {
+  background: linear-gradient(135deg, #c084fc, #e879f9, #a855f7, #f0abfc) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 7s ease infinite !important;
+  color: #2e1065 !important;
+}
+[data-widget-theme="w-anim-aurore-bipolaire"] .widget,
+[data-widget-theme="w-anim-aurore-bipolaire"] .widget-glass {
+  background: linear-gradient(135deg, #6b21a8, #b91c1c, #9333ea, #dc2626) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-anneaux-lumiere"] .widget,
+[data-widget-theme="w-anim-anneaux-lumiere"] .widget-glass {
+  background: linear-gradient(135deg, #581c87, #be185d, #701a75, #9f1239) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 9s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-emeraude-vivante"] .widget,
+[data-widget-theme="w-anim-emeraude-vivante"] .widget-glass {
+  background: linear-gradient(135deg, #022c22, #064e3b, #10b981, #047857) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  color: #ffffff !important;
+}
+[data-widget-theme="w-anim-cosmos-etoile"] .widget,
+[data-widget-theme="w-anim-cosmos-etoile"] .widget-glass {
+  background: linear-gradient(135deg, #0f172a, #581c87, #1e1b4b, #3b0764) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 12s ease infinite !important;
+  color: #ffffff !important;
+}
+
+/* ---------- Widget Animations ---------- */
+@keyframes flow-gradient-slow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.anim-widget-aura-violet {
+  background: linear-gradient(135deg, #1e0533, #4c1d95, #6d28d9, #2e1065) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-neon-magenta {
+  background: linear-gradient(135deg, #9333ea, #f43f5e, #c084fc, #e11d48) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 7s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-flamme-ambree {
+  background: linear-gradient(135deg, #ea580c, #dc2626, #f97316, #b91c1c) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 6s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-ocean-cyan {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6, #0284c7) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-lueur-turquoise {
+  background: linear-gradient(135deg, #0284c7, #0d9488, #38bdf8, #0f766e) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 9s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-eclat-fuchsia {
+  background: linear-gradient(135deg, #c084fc, #e879f9, #a855f7, #f0abfc) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 7s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-aurore-bipolaire {
+  background: linear-gradient(135deg, #6b21a8, #b91c1c, #9333ea, #dc2626) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-anneaux-lumiere {
+  background: linear-gradient(135deg, #581c87, #be185d, #701a75, #9f1239) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 9s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-emeraude-vivante {
+  background: linear-gradient(135deg, #022c22, #064e3b, #10b981, #047857) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 8s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-widget-cosmos-etoile {
+  background: linear-gradient(135deg, #0f172a, #581c87, #1e1b4b, #3b0764) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 12s ease infinite !important;
+  will-change: background-position !important;
+}
+
+/* ---------- Background RGB & Premium Animations ---------- */
+.anim-bg-rgb-spots {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.35), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(147, 51, 234, 0.4), transparent 50%), #090d16 !important;
+  background-size: 200% 200% !important;
+  animation: flow-gradient-slow 14s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-cyan-violet {
+  background: linear-gradient(135deg, #030712 0%, #1e1b4b 30%, #0284c7 70%, #4c1d95 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 12s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-liquid {
+  background: linear-gradient(135deg, #1a0510 0%, #831843 35%, #ea580c 70%, #dc2626 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 10s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-emerald-ocean {
+  background: linear-gradient(135deg, #021a12 0%, #065f46 35%, #0284c7 70%, #0d9488 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 12s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-galaxy {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.25), transparent 60%),
+    linear-gradient(135deg, #0d061f 0%, #311042 50%, #030712 100%) !important;
+  background-size: 200% 200% !important;
+  animation: flow-gradient-slow 15s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-sunset-gold {
+  background: linear-gradient(135deg, #1c0a00 0%, #7c2d12 40%, #d97706 70%, #dc2626 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 11s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-ocean-wave {
+  background: linear-gradient(135deg, #031329 0%, #0f172a 40%, #0284c7 75%, #38bdf8 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 13s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-black-particles {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.08), transparent 50%), #050505 !important;
+  background-size: 100% 100% !important;
+}
+.anim-bg-rgb-pastel-cloud {
+  background: linear-gradient(135deg, #fbcfe8 0%, #e0e7ff 40%, #bae6fd 75%, #f5d0fe 100%) !important;
+  background-size: 300% 300% !important;
+  animation: flow-gradient-slow 12s ease infinite !important;
+  will-change: background-position !important;
+}
+.anim-bg-rgb-silk-rainbow {
+  background: linear-gradient(135deg, #ff0055, #7a00ff, #00e5ff, #00ff66, #ffbb00, #ff0055) !important;
+  background-size: 400% 400% !important;
+  animation: flow-gradient-slow 20s linear infinite !important;
+  will-change: background-position !important;
+}
+
+/* Premium finishes */
+.theme-prem-noir-or {
+  background: linear-gradient(135deg, #09090b 0%, #18181b 60%, #27272a 100%);
+  border-image: linear-gradient(to bottom, #fef08a, #eab308) 1;
+}
+.theme-prem-blanc-beige {
+  background: linear-gradient(135deg, #ffffff 0%, #fafaf9 60%, #f5f5f4 100%);
+}
+.theme-prem-bleu-argent {
+  background: linear-gradient(135deg, #030712 0%, #0b1329 60%, #1e293b 100%);
+}
+.theme-prem-vert-or {
+  background: linear-gradient(135deg, #022c22 0%, #064e3b 60%, #14532d 100%);
+}
+.theme-prem-violet-noir {
+  background: linear-gradient(135deg, #140524 0%, #2e1065 60%, #09090b 100%);
+}
+.theme-prem-sable-desert {
+  background: linear-gradient(135deg, #451a03 0%, #78350f 60%, #9a3412 100%);
+}
+.theme-prem-glassmorphism {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+  backdrop-filter: blur(20px);
+}
+.theme-prem-marbre {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+.theme-prem-soie {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  background-size: 200% 200%;
+  animation: flow-gradient-slow 16s ease infinite;
+}
+.theme-prem-hologram {
+  background: linear-gradient(135deg, #030712 0%, #0369a1 40%, #6d28d9 70%, #030712 100%);
+  background-size: 300% 300%;
+  animation: flow-gradient-slow 10s ease infinite;
+}
+
+/* ---------- Widget Border Themes (Bordures Animées & Glow Subtil 60 FPS) ---------- */
+@keyframes flow-border-gradient {
+  0% {
+    background-position:
+      0% 0%,
+      0% 50%;
+  }
+  50% {
+    background-position:
+      0% 0%,
+      100% 50%;
+  }
+  100% {
+    background-position:
+      0% 0%,
+      0% 50%;
+  }
+}
+
+/* ---------- Base Positioning & Overlay Rules for Custom Borders ---------- */
+.widget,
+.widget-glass,
+.widget-bordered,
+.widget-card,
+/* =========================================================
+   SYSTEME DE PERSONNALISATION DE BORDURES UNIVERSEL - 3 CATEGORIES
+   ========================================================= */
+
+/* CONTAINMENT & RESET RULES FOR ALL CUSTOMIZABLE CONTAINERS */
+[data-widget-border]:not([data-widget-border="wb-none"]) .widget,
+[data-widget-border]:not([data-widget-border="wb-none"]) .widget-glass,
+[data-widget-border]:not([data-widget-border="wb-none"]) .widget-card,
+[data-widget-border]:not([data-widget-border="wb-none"]) .widget-bordered,
+[data-widget-border]:not([data-widget-border="wb-none"]) .glass,
+[data-widget-border]:not([data-widget-border="wb-none"]) .setting-card,
+[data-widget-border]:not([data-widget-border="wb-none"]) [data-widget-card],
+[data-widget-border]:not([data-widget-border="wb-none"]) [data-card] {
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Default / Reset - No custom border */
+.wb-none,
+[data-widget-border="wb-none"] .widget,
+[data-widget-border="wb-none"] .widget-glass,
+[data-widget-border="wb-none"] .widget-card,
+[data-widget-border="wb-none"] .widget-bordered,
+[data-widget-border="wb-none"] .glass,
+[data-widget-border="wb-none"] .setting-card,
+[data-widget-border="wb-none"] [data-widget-card],
+[data-widget-border="wb-none"] [data-card] {
+  border-image: none !important;
+}
+
+[data-widget-border="wb-none"] .widget::after,
+[data-widget-border="wb-none"] .widget-glass::after,
+[data-widget-border="wb-none"] .widget-card::after,
+[data-widget-border="wb-none"] .widget-bordered::after,
+[data-widget-border="wb-none"] .glass::after,
+[data-widget-border="wb-none"] .setting-card::after,
+[data-widget-border="wb-none"] [data-widget-card]::after,
+[data-widget-border="wb-none"] [data-card]::after,
+[data-widget-border="wb-none"] .widget::before,
+[data-widget-border="wb-none"] .widget-glass::before,
+[data-widget-border="wb-none"] .widget-card::before,
+[data-widget-border="wb-none"] .widget-bordered::before,
+[data-widget-border="wb-none"] .glass::before,
+[data-widget-border="wb-none"] .setting-card::before,
+[data-widget-border="wb-none"] [data-widget-card]::before,
+[data-widget-border="wb-none"] [data-card]::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Hide all pseudo-element gradient overlays for ALL solid border themes */
+[data-widget-border^="wb-solid-"] .widget::after,
+[data-widget-border^="wb-solid-"] .widget-glass::after,
+[data-widget-border^="wb-solid-"] .widget-card::after,
+[data-widget-border^="wb-solid-"] .widget-bordered::after,
+[data-widget-border^="wb-solid-"] .glass::after,
+[data-widget-border^="wb-solid-"] .setting-card::after,
+[data-widget-border^="wb-solid-"] [data-widget-card]::after,
+[data-widget-border^="wb-solid-"] [data-card]::after,
+[data-widget-border^="wb-solid-"] .widget::before,
+[data-widget-border^="wb-solid-"] .widget-glass::before,
+[data-widget-border^="wb-solid-"] .widget-card::before,
+[data-widget-border^="wb-solid-"] .widget-bordered::before,
+[data-widget-border^="wb-solid-"] .glass::before,
+[data-widget-border^="wb-solid-"] .setting-card::before,
+[data-widget-border^="wb-solid-"] [data-widget-card]::before,
+[data-widget-border^="wb-solid-"] [data-card]::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* ---------------------------------------------------------
+   CATEGORY 1: BORDURES UNIES (SOLID - 7 MODELS)
+   --------------------------------------------------------- */
+/* Fine Élégante (1.5px) */
+[data-widget-border="wb-solid-subtle"] .widget,
+[data-widget-border="wb-solid-subtle"] .widget-glass,
+[data-widget-border="wb-solid-subtle"] .widget-card,
+[data-widget-border="wb-solid-subtle"] .widget-bordered,
+[data-widget-border="wb-solid-subtle"] .glass,
+[data-widget-border="wb-solid-subtle"] .setting-card,
+[data-widget-border="wb-solid-subtle"] [data-widget-card],
+[data-widget-border="wb-solid-subtle"] [data-card],
+.wb-solid-subtle {
+  border: 1.5px solid rgba(148, 163, 184, 0.5) !important;
+}
+
+/* Contour Or Pur (2px gold) */
+[data-widget-border="wb-solid-gold"] .widget,
+[data-widget-border="wb-solid-gold"] .widget-glass,
+[data-widget-border="wb-solid-gold"] .widget-card,
+[data-widget-border="wb-solid-gold"] .widget-bordered,
+[data-widget-border="wb-solid-gold"] .glass,
+[data-widget-border="wb-solid-gold"] .setting-card,
+[data-widget-border="wb-solid-gold"] [data-widget-card],
+[data-widget-border="wb-solid-gold"] [data-card],
+.wb-solid-gold {
+  border: 2px solid #eab308 !important;
+  box-shadow:
+    inset 0 0 10px rgba(234, 179, 8, 0.08),
+    0 0 10px rgba(234, 179, 8, 0.2) !important;
+}
+
+/* Contour Émeraude (2px emerald) */
+[data-widget-border="wb-solid-emerald"] .widget,
+[data-widget-border="wb-solid-emerald"] .widget-glass,
+[data-widget-border="wb-solid-emerald"] .widget-card,
+[data-widget-border="wb-solid-emerald"] .widget-bordered,
+[data-widget-border="wb-solid-emerald"] .glass,
+[data-widget-border="wb-solid-emerald"] .setting-card,
+[data-widget-border="wb-solid-emerald"] [data-widget-card],
+[data-widget-border="wb-solid-emerald"] [data-card],
+.wb-solid-emerald {
+  border: 2px solid #059669 !important;
+  box-shadow:
+    inset 0 0 10px rgba(5, 150, 105, 0.08),
+    0 0 10px rgba(5, 150, 105, 0.2) !important;
+}
+
+/* Contour Saphir (2px sapphire) */
+[data-widget-border="wb-solid-sapphire"] .widget,
+[data-widget-border="wb-solid-sapphire"] .widget-glass,
+[data-widget-border="wb-solid-sapphire"] .widget-card,
+[data-widget-border="wb-solid-sapphire"] .widget-bordered,
+[data-widget-border="wb-solid-sapphire"] .glass,
+[data-widget-border="wb-solid-sapphire"] .setting-card,
+[data-widget-border="wb-solid-sapphire"] [data-widget-card],
+[data-widget-border="wb-solid-sapphire"] [data-card],
+.wb-solid-sapphire {
+  border: 2px solid #2563eb !important;
+  box-shadow:
+    inset 0 0 10px rgba(37, 99, 235, 0.08),
+    0 0 10px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* Double Trait Impérial (3.5px double) */
+[data-widget-border="wb-solid-double"] .widget,
+[data-widget-border="wb-solid-double"] .widget-glass,
+[data-widget-border="wb-solid-double"] .widget-card,
+[data-widget-border="wb-solid-double"] .widget-bordered,
+[data-widget-border="wb-solid-double"] .glass,
+[data-widget-border="wb-solid-double"] .setting-card,
+[data-widget-border="wb-solid-double"] [data-widget-card],
+[data-widget-border="wb-solid-double"] [data-card],
+.wb-solid-double {
+  border: 3.5px double rgba(217, 119, 6, 0.9) !important;
+}
+
+/* Pointillée Zénith (2px dashed emerald) */
+[data-widget-border="wb-solid-dashed"] .widget,
+[data-widget-border="wb-solid-dashed"] .widget-glass,
+[data-widget-border="wb-solid-dashed"] .widget-card,
+[data-widget-border="wb-solid-dashed"] .widget-bordered,
+[data-widget-border="wb-solid-dashed"] .glass,
+[data-widget-border="wb-solid-dashed"] .setting-card,
+[data-widget-border="wb-solid-dashed"] [data-widget-card],
+[data-widget-border="wb-solid-dashed"] [data-card],
+.wb-solid-dashed {
+  border: 2px dashed rgba(16, 185, 129, 0.85) !important;
+}
+
+/* Clear base border color for all animated & interactive themes so background borders don't leak through */
+[data-widget-border^="wb-anim-"] .widget,
+[data-widget-border^="wb-anim-"] .widget-glass,
+[data-widget-border^="wb-anim-"] .widget-card,
+[data-widget-border^="wb-anim-"] .widget-bordered,
+[data-widget-border^="wb-anim-"] .glass,
+[data-widget-border^="wb-anim-"] .setting-card,
+[data-widget-border^="wb-anim-"] [data-widget-card],
+[data-widget-border^="wb-anim-"] [data-card],
+[data-widget-border="wb-or-pur"] .widget,
+[data-widget-border="wb-or-pur"] .widget-glass,
+[data-widget-border="wb-or-pur"] .widget-card,
+[data-widget-border="wb-or-pur"] .widget-bordered,
+[data-widget-border="wb-or-pur"] .glass,
+[data-widget-border="wb-or-pur"] .setting-card,
+[data-widget-border="wb-or-pur"] [data-widget-card],
+[data-widget-border="wb-or-pur"] [data-card],
+[data-widget-border="wb-chroma-wave"] .widget,
+[data-widget-border="wb-chroma-wave"] .widget-glass,
+[data-widget-border="wb-chroma-wave"] .widget-card,
+[data-widget-border="wb-chroma-wave"] .widget-bordered,
+[data-widget-border="wb-chroma-wave"] .glass,
+[data-widget-border="wb-chroma-wave"] .setting-card,
+[data-widget-border="wb-chroma-wave"] [data-widget-card],
+[data-widget-border="wb-chroma-wave"] [data-card],
+[data-widget-border="wb-quantum-flux"] .widget,
+[data-widget-border="wb-quantum-flux"] .widget-glass,
+[data-widget-border="wb-quantum-flux"] .widget-card,
+[data-widget-border="wb-quantum-flux"] .widget-bordered,
+[data-widget-border="wb-quantum-flux"] .glass,
+[data-widget-border="wb-quantum-flux"] .setting-card,
+[data-widget-border="wb-quantum-flux"] [data-widget-card],
+[data-widget-border="wb-quantum-flux"] [data-card],
+[data-widget-border="wb-sunset-prestige"] .widget,
+[data-widget-border="wb-sunset-prestige"] .widget-glass,
+[data-widget-border="wb-sunset-prestige"] .widget-card,
+[data-widget-border="wb-sunset-prestige"] .widget-bordered,
+[data-widget-border="wb-sunset-prestige"] .glass,
+[data-widget-border="wb-sunset-prestige"] .setting-card,
+[data-widget-border="wb-sunset-prestige"] [data-widget-card],
+[data-widget-border="wb-sunset-prestige"] [data-card],
+[data-widget-border="wb-cosmic-galaxy"] .widget,
+[data-widget-border="wb-cosmic-galaxy"] .widget-glass,
+[data-widget-border="wb-cosmic-galaxy"] .widget-card,
+[data-widget-border="wb-cosmic-galaxy"] .widget-bordered,
+[data-widget-border="wb-cosmic-galaxy"] .glass,
+[data-widget-border="wb-cosmic-galaxy"] .setting-card,
+[data-widget-border="wb-cosmic-galaxy"] [data-widget-card],
+[data-widget-border="wb-cosmic-galaxy"] [data-card],
+[data-widget-border="wb-cyber-neon"] .widget,
+[data-widget-border="wb-cyber-neon"] .widget-glass,
+[data-widget-border="wb-cyber-neon"] .widget-card,
+[data-widget-border="wb-cyber-neon"] .widget-bordered,
+[data-widget-border="wb-cyber-neon"] .glass,
+[data-widget-border="wb-cyber-neon"] .setting-card,
+[data-widget-border="wb-cyber-neon"] [data-widget-card],
+[data-widget-border="wb-cyber-neon"] [data-card],
+[data-widget-border="wb-rainbow-luxe"] .widget,
+[data-widget-border="wb-rainbow-luxe"] .widget-glass,
+[data-widget-border="wb-rainbow-luxe"] .widget-card,
+[data-widget-border="wb-rainbow-luxe"] .widget-bordered,
+[data-widget-border="wb-rainbow-luxe"] .glass,
+[data-widget-border="wb-rainbow-luxe"] .setting-card,
+[data-widget-border="wb-rainbow-luxe"] [data-widget-card],
+[data-widget-border="wb-rainbow-luxe"] [data-card],
+[data-widget-border^="wb-interact-"] .widget,
+[data-widget-border^="wb-interact-"] .widget-glass,
+[data-widget-border^="wb-interact-"] .widget-card,
+[data-widget-border^="wb-interact-"] .widget-bordered,
+[data-widget-border^="wb-interact-"] .glass,
+[data-widget-border^="wb-interact-"] .setting-card,
+[data-widget-border^="wb-interact-"] [data-widget-card],
+[data-widget-border^="wb-interact-"] [data-card] {
+  border-color: transparent !important;
+}
+
+/* ---------------------------------------------------------
+   CATEGORY 2: BORDURES MULTICOLORES ANIMÉES (ANIMATED - 7 MODELS)
+   --------------------------------------------------------- */
+/* Common pseudo-element setup for animated borders */
+[data-widget-border="wb-or-pur"] .widget::after,
+[data-widget-border="wb-or-pur"] .widget-glass::after,
+[data-widget-border="wb-or-pur"] .widget-card::after,
+[data-widget-border="wb-or-pur"] .widget-bordered::after,
+[data-widget-border="wb-or-pur"] .glass::after,
+[data-widget-border="wb-or-pur"] .setting-card::after,
+[data-widget-border="wb-or-pur"] [data-widget-card]::after,
+[data-widget-border="wb-or-pur"] [data-card]::after,
+.wb-anim-or-pur::after,
+[data-widget-border="wb-chroma-wave"] .widget::after,
+[data-widget-border="wb-chroma-wave"] .widget-glass::after,
+[data-widget-border="wb-chroma-wave"] .widget-card::after,
+[data-widget-border="wb-chroma-wave"] .widget-bordered::after,
+[data-widget-border="wb-chroma-wave"] .glass::after,
+[data-widget-border="wb-chroma-wave"] .setting-card::after,
+[data-widget-border="wb-chroma-wave"] [data-widget-card]::after,
+[data-widget-border="wb-chroma-wave"] [data-card]::after,
+.wb-anim-chroma-wave::after,
+[data-widget-border="wb-quantum-flux"] .widget::after,
+[data-widget-border="wb-quantum-flux"] .widget-glass::after,
+[data-widget-border="wb-quantum-flux"] .widget-card::after,
+[data-widget-border="wb-quantum-flux"] .widget-bordered::after,
+[data-widget-border="wb-quantum-flux"] .glass::after,
+[data-widget-border="wb-quantum-flux"] .setting-card::after,
+[data-widget-border="wb-quantum-flux"] [data-widget-card]::after,
+[data-widget-border="wb-quantum-flux"] [data-card]::after,
+.wb-anim-quantum-flux::after,
+[data-widget-border="wb-sunset-prestige"] .widget::after,
+[data-widget-border="wb-sunset-prestige"] .widget-glass::after,
+[data-widget-border="wb-sunset-prestige"] .widget-card::after,
+[data-widget-border="wb-sunset-prestige"] .widget-bordered::after,
+[data-widget-border="wb-sunset-prestige"] .glass::after,
+[data-widget-border="wb-sunset-prestige"] .setting-card::after,
+[data-widget-border="wb-sunset-prestige"] [data-widget-card]::after,
+[data-widget-border="wb-sunset-prestige"] [data-card]::after,
+.wb-anim-sunset-prestige::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-glass::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-card::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-bordered::after,
+[data-widget-border="wb-cosmic-galaxy"] .glass::after,
+[data-widget-border="wb-cosmic-galaxy"] .setting-card::after,
+[data-widget-border="wb-cosmic-galaxy"] [data-widget-card]::after,
+[data-widget-border="wb-cosmic-galaxy"] [data-card]::after,
+.wb-anim-cosmic-galaxy::after,
+[data-widget-border="wb-cyber-neon"] .widget::after,
+[data-widget-border="wb-cyber-neon"] .widget-glass::after,
+[data-widget-border="wb-cyber-neon"] .widget-card::after,
+[data-widget-border="wb-cyber-neon"] .widget-bordered::after,
+[data-widget-border="wb-cyber-neon"] .glass::after,
+[data-widget-border="wb-cyber-neon"] .setting-card::after,
+[data-widget-border="wb-cyber-neon"] [data-widget-card]::after,
+[data-widget-border="wb-cyber-neon"] [data-card]::after,
+.wb-anim-cyber-neon::after,
+[data-widget-border="wb-rainbow-luxe"] .widget::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-glass::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-card::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-bordered::after,
+[data-widget-border="wb-rainbow-luxe"] .glass::after,
+[data-widget-border="wb-rainbow-luxe"] .setting-card::after,
+[data-widget-border="wb-rainbow-luxe"] [data-widget-card]::after,
+[data-widget-border="wb-rainbow-luxe"] [data-card]::after,
+.wb-anim-rainbow-luxe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.2px;
+  background-origin: border-box;
+  box-sizing: border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 1. Or Pur Impérial */
+[data-widget-border="wb-or-pur"] .widget::after,
+[data-widget-border="wb-or-pur"] .widget-glass::after,
+[data-widget-border="wb-or-pur"] .widget-card::after,
+[data-widget-border="wb-or-pur"] .widget-bordered::after,
+[data-widget-border="wb-or-pur"] .glass::after,
+[data-widget-border="wb-or-pur"] .setting-card::after,
+[data-widget-border="wb-or-pur"] [data-widget-card]::after,
+[data-widget-border="wb-or-pur"] [data-card]::after,
+.wb-anim-or-pur::after {
+  background-image: linear-gradient(135deg, #fef08a, #f59e0b, #d97706, #fef08a) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 7s ease infinite !important;
+}
+
+/* 2. Chroma Wave */
+[data-widget-border="wb-chroma-wave"] .widget::after,
+[data-widget-border="wb-chroma-wave"] .widget-glass::after,
+[data-widget-border="wb-chroma-wave"] .widget-card::after,
+[data-widget-border="wb-chroma-wave"] .widget-bordered::after,
+[data-widget-border="wb-chroma-wave"] .glass::after,
+[data-widget-border="wb-chroma-wave"] .setting-card::after,
+[data-widget-border="wb-chroma-wave"] [data-widget-card]::after,
+[data-widget-border="wb-chroma-wave"] [data-card]::after,
+.wb-anim-chroma-wave::after {
+  background-image: linear-gradient(
+    135deg,
+    #38bdf8,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b,
+    #10b981,
+    #38bdf8
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 5s linear infinite !important;
+}
+
+/* 3. Quantum Flux */
+[data-widget-border="wb-quantum-flux"] .widget::after,
+[data-widget-border="wb-quantum-flux"] .widget-glass::after,
+[data-widget-border="wb-quantum-flux"] .widget-card::after,
+[data-widget-border="wb-quantum-flux"] .widget-bordered::after,
+[data-widget-border="wb-quantum-flux"] .glass::after,
+[data-widget-border="wb-quantum-flux"] .setting-card::after,
+[data-widget-border="wb-quantum-flux"] [data-widget-card]::after,
+[data-widget-border="wb-quantum-flux"] [data-card]::after,
+.wb-anim-quantum-flux::after {
+  background-image: linear-gradient(
+    135deg,
+    #d946ef,
+    #06b6d4,
+    #f59e0b,
+    #8b5cf6,
+    #f43f5e,
+    #d946ef
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 4s ease-in-out infinite !important;
+}
+
+/* 4. Sunset Prestige */
+[data-widget-border="wb-sunset-prestige"] .widget::after,
+[data-widget-border="wb-sunset-prestige"] .widget-glass::after,
+[data-widget-border="wb-sunset-prestige"] .widget-card::after,
+[data-widget-border="wb-sunset-prestige"] .widget-bordered::after,
+[data-widget-border="wb-sunset-prestige"] .glass::after,
+[data-widget-border="wb-sunset-prestige"] .setting-card::after,
+[data-widget-border="wb-sunset-prestige"] [data-widget-card]::after,
+[data-widget-border="wb-sunset-prestige"] [data-card]::after,
+.wb-anim-sunset-prestige::after {
+  background-image: linear-gradient(135deg, #ea580c, #f97316, #dc2626, #fbbf24, #ea580c) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 7s ease infinite !important;
+}
+
+/* 5. Cosmic Galaxy */
+[data-widget-border="wb-cosmic-galaxy"] .widget::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-glass::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-card::after,
+[data-widget-border="wb-cosmic-galaxy"] .widget-bordered::after,
+[data-widget-border="wb-cosmic-galaxy"] .glass::after,
+[data-widget-border="wb-cosmic-galaxy"] .setting-card::after,
+[data-widget-border="wb-cosmic-galaxy"] [data-widget-card]::after,
+[data-widget-border="wb-cosmic-galaxy"] [data-card]::after,
+.wb-anim-cosmic-galaxy::after {
+  background-image: linear-gradient(135deg, #6d28d9, #3b82f6, #d946ef, #1e1b4b, #6d28d9) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 10s ease infinite !important;
+}
+
+/* 6. Cyber Néon Fuchsia */
+[data-widget-border="wb-cyber-neon"] .widget::after,
+[data-widget-border="wb-cyber-neon"] .widget-glass::after,
+[data-widget-border="wb-cyber-neon"] .widget-card::after,
+[data-widget-border="wb-cyber-neon"] .widget-bordered::after,
+[data-widget-border="wb-cyber-neon"] .glass::after,
+[data-widget-border="wb-cyber-neon"] .setting-card::after,
+[data-widget-border="wb-cyber-neon"] [data-widget-card]::after,
+[data-widget-border="wb-cyber-neon"] [data-card]::after,
+.wb-anim-cyber-neon::after {
+  background-image: linear-gradient(135deg, #e11d48, #c084fc, #9333ea, #f43f5e) !important;
+  background-size: 300% 300% !important;
+  animation: flow-border-gradient 6s ease infinite !important;
+}
+
+/* 7. Rainbow Luxe */
+[data-widget-border="wb-rainbow-luxe"] .widget::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-glass::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-card::after,
+[data-widget-border="wb-rainbow-luxe"] .widget-bordered::after,
+[data-widget-border="wb-rainbow-luxe"] .glass::after,
+[data-widget-border="wb-rainbow-luxe"] .setting-card::after,
+[data-widget-border="wb-rainbow-luxe"] [data-widget-card]::after,
+[data-widget-border="wb-rainbow-luxe"] [data-card]::after,
+.wb-anim-rainbow-luxe::after {
+  background-image: linear-gradient(
+    135deg,
+    #f43f5e,
+    #fb923c,
+    #facc15,
+    #4ade80,
+    #38bdf8,
+    #818cf8,
+    #c084fc,
+    #f472b6,
+    #f43f5e
+  ) !important;
+  background-size: 400% 400% !important;
+  animation: flow-border-gradient 15s linear infinite !important;
+}
+
+/* ---------------------------------------------------------
+   CATEGORY 3: BORDURES INTERACTIVES (3 ANIMATIONS COMBINÉES : CONTOUR + ONDE CONTACT + SCROLL WAVE)
+   --------------------------------------------------------- */
+
+/* Keyframe Animations */
+@keyframes border-beam-travel {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes touch-point-shockwave {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.9);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+    box-shadow: 0 0 35px 20px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes scroll-fluid-wave {
+  0% {
+    background-position: -150% -150%;
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    background-position: 250% 250%;
+    opacity: 0.15;
+  }
+}
+
+/* Base styling for interactive border widgets */
+[data-widget-border^="wb-interact-"] .widget,
+[data-widget-border^="wb-interact-"] .widget-card,
+[data-widget-border^="wb-interact-"] .setting-card,
+[data-widget-border^="wb-interact-"] [data-widget-card],
+.wb-interact-prisme,
+.wb-interact-emerald,
+.wb-interact-sapphire,
+.wb-interact-amber,
+.wb-interact-neon,
+.wb-interact-diamond,
+.wb-interact-ruby {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* --- ANIMATION 1: CONTOUR / BORDER BEAM ON TOUCH --- */
+[data-widget-border^="wb-interact-"] .widget::after,
+[data-widget-border^="wb-interact-"] .widget-glass::after,
+[data-widget-border^="wb-interact-"] .widget-card::after,
+[data-widget-border^="wb-interact-"] .setting-card::after,
+[data-widget-border^="wb-interact-"] [data-widget-card]::after,
+.wb-interact-prisme::after,
+.wb-interact-emerald::after,
+.wb-interact-sapphire::after,
+.wb-interact-amber::after,
+.wb-interact-neon::after,
+.wb-interact-diamond::after,
+.wb-interact-ruby::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background-origin: border-box;
+  box-sizing: border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0.25;
+  transition:
+    opacity 0.35s ease,
+    padding 0.3s ease;
+  background-size: 250% 250%;
+  animation: border-beam-travel 4s ease-in-out infinite;
+}
+
+/* Highlight border on touch down or hover */
+[data-widget-border^="wb-interact-"] [data-touch-active="true"]::after,
+[data-widget-border^="wb-interact-"] .widget:active::after,
+[data-widget-border^="wb-interact-"] .widget-card:active::after,
+.wb-interact-prisme[data-touch-active="true"]::after,
+.wb-interact-emerald[data-touch-active="true"]::after,
+.wb-interact-sapphire[data-touch-active="true"]::after,
+.wb-interact-amber[data-touch-active="true"]::after,
+.wb-interact-neon[data-touch-active="true"]::after,
+.wb-interact-diamond[data-touch-active="true"]::after,
+.wb-interact-ruby[data-touch-active="true"]::after {
+  opacity: 1 !important;
+  padding: 3.5px !important;
+}
+
+/* Theme 1: Prisme Stellaire */
+[data-widget-border="wb-interact-prisme"] .widget::after,
+[data-widget-border="wb-interact-prisme"] .widget-card::after,
+.wb-interact-prisme::after {
+  background-image: linear-gradient(135deg, #fef08a, #f59e0b, #38bdf8, #e0e7ff, #fef08a) !important;
+}
+
+/* Theme 2: Océan Émeraude */
+[data-widget-border="wb-interact-emerald"] .widget::after,
+[data-widget-border="wb-interact-emerald"] .widget-card::after,
+.wb-interact-emerald::after {
+  background-image: linear-gradient(135deg, #a7f3d0, #10b981, #06b6d4, #047857, #a7f3d0) !important;
+}
+
+/* Theme 3: Ciel Saphir */
+[data-widget-border="wb-interact-sapphire"] .widget::after,
+[data-widget-border="wb-interact-sapphire"] .widget-card::after,
+.wb-interact-sapphire::after {
+  background-image: linear-gradient(135deg, #bfdbfe, #3b82f6, #6366f1, #1e3a8a, #bfdbfe) !important;
+}
+
+/* Theme 4: Soleil Ambré */
+[data-widget-border="wb-interact-amber"] .widget::after,
+[data-widget-border="wb-interact-amber"] .widget-card::after,
+.wb-interact-amber::after {
+  background-image: linear-gradient(135deg, #fef08a, #eab308, #f97316, #b45309, #fef08a) !important;
+}
+
+/* Theme 5: Aurore Violette */
+[data-widget-border="wb-interact-neon"] .widget::after,
+[data-widget-border="wb-interact-neon"] .widget-card::after,
+.wb-interact-neon::after {
+  background-image: linear-gradient(135deg, #fbcfe8, #d946ef, #8b5cf6, #701a75, #fbcfe8) !important;
+}
+
+/* Theme 6: Cristal Diamant */
+[data-widget-border="wb-interact-diamond"] .widget::after,
+[data-widget-border="wb-interact-diamond"] .widget-card::after,
+.wb-interact-diamond::after {
+  background-image: linear-gradient(135deg, #ffffff, #cbd5e1, #94a3b8, #e2e8f0, #ffffff) !important;
+}
+
+/* Theme 7: Rubis Royal */
+[data-widget-border="wb-interact-ruby"] .widget::after,
+[data-widget-border="wb-interact-ruby"] .widget-card::after,
+.wb-interact-ruby::after {
+  background-image: linear-gradient(135deg, #fecdd3, #e11d48, #f43f5e, #881337, #fecdd3) !important;
+}
+
+/* --- ANIMATION 2: POINT OF CONTACT RIPPLE PULSE --- */
+.touch-contact-pulse {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 25;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    transparent 70%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  animation: touch-point-shockwave 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+/* Theme specific contact pulse gradients */
+[data-widget-border="wb-interact-prisme"] .touch-contact-pulse,
+.wb-interact-prisme .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(254, 240, 138, 0.9) 0%,
+    rgba(56, 189, 248, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #f59e0b;
+}
+
+[data-widget-border="wb-interact-emerald"] .touch-contact-pulse,
+.wb-interact-emerald .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(167, 243, 208, 0.9) 0%,
+    rgba(6, 182, 212, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #10b981;
+}
+
+[data-widget-border="wb-interact-sapphire"] .touch-contact-pulse,
+.wb-interact-sapphire .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(191, 219, 254, 0.9) 0%,
+    rgba(99, 102, 241, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #3b82f6;
+}
+
+[data-widget-border="wb-interact-amber"] .touch-contact-pulse,
+.wb-interact-amber .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(254, 240, 138, 0.95) 0%,
+    rgba(249, 115, 22, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #eab308;
+}
+
+[data-widget-border="wb-interact-neon"] .touch-contact-pulse,
+.wb-interact-neon .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(251, 207, 232, 0.9) 0%,
+    rgba(139, 92, 246, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #d946ef;
+}
+
+[data-widget-border="wb-interact-diamond"] .touch-contact-pulse,
+.wb-interact-diamond .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(203, 213, 225, 0.5) 50%,
+    transparent 80%
+  );
+  border-color: #ffffff;
+}
+
+[data-widget-border="wb-interact-ruby"] .touch-contact-pulse,
+.wb-interact-ruby .touch-contact-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(254, 205, 211, 0.9) 0%,
+    rgba(244, 63, 94, 0.4) 50%,
+    transparent 80%
+  );
+  border-color: #e11d48;
+}
+
+/* --- ANIMATION 3: SCROLL & PAGE CHANGE FLUID WAVE --- */
+[data-widget-border^="wb-interact-"] .widget::before,
+[data-widget-border^="wb-interact-"] .widget-card::before,
+[data-widget-border^="wb-interact-"] .setting-card::before,
+[data-widget-border^="wb-interact-"] [data-widget-card]::before,
+.wb-interact-prisme::before,
+.wb-interact-emerald::before,
+.wb-interact-sapphire::before,
+.wb-interact-amber::before,
+.wb-interact-neon::before,
+.wb-interact-diamond::before,
+.wb-interact-ruby::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  background-size: 200% 200%;
+  transition: opacity 0.4s ease;
+}
+
+/* Active during page scroll */
+body[data-scrolling="true"] [data-widget-border^="wb-interact-"] .widget::before,
+body[data-scrolling="true"] [data-widget-border^="wb-interact-"] .widget-card::before,
+body[data-scrolling="true"] [data-widget-border^="wb-interact-"] .setting-card::before,
+body[data-scrolling="true"] [data-widget-border^="wb-interact-"] [data-widget-card]::before,
+body[data-scrolling="true"] .wb-interact-prisme::before,
+body[data-scrolling="true"] .wb-interact-emerald::before,
+body[data-scrolling="true"] .wb-interact-sapphire::before,
+body[data-scrolling="true"] .wb-interact-amber::before,
+body[data-scrolling="true"] .wb-interact-neon::before,
+body[data-scrolling="true"] .wb-interact-diamond::before,
+body[data-scrolling="true"] .wb-interact-ruby::before {
+  opacity: 0.85;
+  animation: scroll-fluid-wave 0.85s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Scroll wave gradients per theme */
+[data-widget-border="wb-interact-prisme"] .widget::before,
+.wb-interact-prisme::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(254, 240, 138, 0.35) 48%,
+    rgba(56, 189, 248, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-emerald"] .widget::before,
+.wb-interact-emerald::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(167, 243, 208, 0.35) 48%,
+    rgba(6, 182, 212, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-sapphire"] .widget::before,
+.wb-interact-sapphire::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(191, 219, 254, 0.35) 48%,
+    rgba(99, 102, 241, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-amber"] .widget::before,
+.wb-interact-amber::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(254, 240, 138, 0.4) 48%,
+    rgba(249, 115, 22, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-neon"] .widget::before,
+.wb-interact-neon::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(251, 207, 232, 0.35) 48%,
+    rgba(139, 92, 246, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-diamond"] .widget::before,
+.wb-interact-diamond::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 48%,
+    rgba(203, 213, 225, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+[data-widget-border="wb-interact-ruby"] .widget::before,
+.wb-interact-ruby::before {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(254, 205, 211, 0.35) 48%,
+    rgba(244, 63, 94, 0.35) 52%,
+    transparent 70%
+  );
+}
+
+/* Ripple shockwave element */
+.border-touch-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+  pointer-events: none;
+  z-index: 25;
+  transform: scale(0);
+  animation: ripple-border-expand 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes ripple-border-expand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ---------- 3D Depth & Subtle Light Movement for Widgets ---------- */
+@keyframes widget-3d-glow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.widget-3d-depth,
+.widget,
+.widget-glass {
+  position: relative;
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.12),
+    0 6px 18px -4px rgba(0, 0, 0, 0.12),
+    0 12px 24px -8px rgba(0, 0, 0, 0.08) !important;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.widget::before,
+.widget-glass::before,
+.widget-3d-depth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Audio Equalizer Vertical Bars Keyframes ---------- */
+@keyframes eq-bar-1 {
+  0%,
+  100% {
+    height: 25%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+@keyframes eq-bar-2 {
+  0%,
+  100% {
+    height: 90%;
+  }
+  50% {
+    height: 35%;
+  }
+}
+@keyframes eq-bar-3 {
+  0%,
+  100% {
+    height: 40%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+@keyframes eq-bar-4 {
+  0%,
+  100% {
+    height: 100%;
+  }
+  50% {
+    height: 20%;
+  }
+}
+
+.animate-eq-bar-1 {
+  animation: eq-bar-1 0.75s ease-in-out infinite;
+}
+.animate-eq-bar-2 {
+  animation: eq-bar-2 0.65s ease-in-out infinite;
+}
+.animate-eq-bar-3 {
+  animation: eq-bar-3 0.85s ease-in-out infinite;
+}
+.animate-eq-bar-4 {
+  animation: eq-bar-4 0.7s ease-in-out infinite;
+}
+
+/* ---------- Quran Specific Font Styles ---------- */
+.quran-font-uthmani {
+  font-family: "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif !important;
+}
+.quran-font-tajwid {
+  font-family: "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif !important;
+}
+.quran-font-indopak {
+  font-family: "Lateef", "Amiri", "Noto Naskh Arabic", serif !important;
+}
+.quran-font-scheherazade {
+  font-family: "Scheherazade New", "Amiri", serif !important;
+}
+.quran-font-amiri {
+  font-family: "Amiri", "Scheherazade New", serif !important;
+}
+
+/* ---------- Global Font Size Scaling ---------- */
+[data-font-size="large"] {
+  font-size: 108% !important;
+}
+[data-font-size="xlarge"] {
+  font-size: 116% !important;
+}
+
+/* ---------- Icon Size Scaling ---------- */
+[data-icon-size="large"] svg {
+  transform: scale(1.15);
+}
+
+/* ---------- Animation Intensity Control ---------- */
+[data-animation-intensity="none"] *,
+[data-animation-intensity="none"] *::before,
+[data-animation-intensity="none"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-animation-intensity="reduced"] *,
+[data-animation-intensity="reduced"] *::before,
+[data-animation-intensity="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* ---------- Battery Saver Mode ---------- */
+[data-battery-saver="true"] *,
+[data-battery-saver="true"] *::before,
+[data-battery-saver="true"] *::after {
+  animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+[data-battery-saver="true"] {
+  --glow-opacity: 0 !important;
+  backdrop-filter: none !important;
+}
+
+/* ---------- Barcode Scanner Styling ---------- */
+#halal-barcode-reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 1rem !important;
+}
+#halal-barcode-reader canvas {
+  display: none !important;
+}
+#halal-barcode-reader img {
+  display: none !important;
+}
+
+/* ---------- Developer Signature Widget Animations ---------- */
+@keyframes devShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes devPulseGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+.animate-dev-shimmer {
+  background-size: 200% 200%;
+  animation: devShimmer 3.5s ease infinite;
+}
+
+.animate-dev-glow {
+  animation: devPulseGlow 3s ease-in-out infinite;
+}
+
+/* ---------- Premium App Toast Positioning & Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .group\/toast {
+    transition: opacity 0.15s ease !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+

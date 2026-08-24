@@ -1,0 +1,6 @@
+{
+  "name": "Islam-Noor",
+  "description": "Islam-Noor, votre application islamique : horaires de prière, Qibla, Coran et scanner halal.",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

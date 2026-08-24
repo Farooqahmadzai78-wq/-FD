@@ -1,0 +1,838 @@
+export type QuranSurahMeta = {
+  number: number;
+  name: string;
+  englishName: string;
+  englishNameTranslation: string;
+  numberOfAyahs: number;
+};
+
+/**
+ * Official list of the 114 Surahs of the Holy Quran.
+ */
+export const ALL_SURAHS: QuranSurahMeta[] = [
+  {
+    number: 1,
+    name: "الفاتحة",
+    englishName: "Al-Fatiha",
+    englishNameTranslation: "L'Ouverture",
+    numberOfAyahs: 7,
+  },
+  {
+    number: 2,
+    name: "البقرة",
+    englishName: "Al-Baqarah",
+    englishNameTranslation: "La Vache",
+    numberOfAyahs: 286,
+  },
+  {
+    number: 3,
+    name: "آل عمران",
+    englishName: "Ali 'Imran",
+    englishNameTranslation: "La Famille d'Imran",
+    numberOfAyahs: 200,
+  },
+  {
+    number: 4,
+    name: "النساء",
+    englishName: "An-Nisa",
+    englishNameTranslation: "Les Femmes",
+    numberOfAyahs: 176,
+  },
+  {
+    number: 5,
+    name: "المائدة",
+    englishName: "Al-Ma'idah",
+    englishNameTranslation: "La Table Servie",
+    numberOfAyahs: 120,
+  },
+  {
+    number: 6,
+    name: "الأنعام",
+    englishName: "Al-An'am",
+    englishNameTranslation: "Les Bestiaux",
+    numberOfAyahs: 165,
+  },
+  {
+    number: 7,
+    name: "الأعراف",
+    englishName: "Al-A'raf",
+    englishNameTranslation: "Les Murailles",
+    numberOfAyahs: 206,
+  },
+  {
+    number: 8,
+    name: "الأنفال",
+    englishName: "Al-Anfal",
+    englishNameTranslation: "Le Dépouille",
+    numberOfAyahs: 75,
+  },
+  {
+    number: 9,
+    name: "التوبة",
+    englishName: "At-Tawbah",
+    englishNameTranslation: "Le Repentir",
+    numberOfAyahs: 129,
+  },
+  {
+    number: 10,
+    name: "يونس",
+    englishName: "Yunus",
+    englishNameTranslation: "Jonas",
+    numberOfAyahs: 109,
+  },
+  {
+    number: 11,
+    name: "هود",
+    englishName: "Hud",
+    englishNameTranslation: "Hud",
+    numberOfAyahs: 123,
+  },
+  {
+    number: 12,
+    name: "يوسف",
+    englishName: "Yusuf",
+    englishNameTranslation: "Joseph",
+    numberOfAyahs: 111,
+  },
+  {
+    number: 13,
+    name: "الرعد",
+    englishName: "Ar-Ra'd",
+    englishNameTranslation: "Le Tonnerre",
+    numberOfAyahs: 43,
+  },
+  {
+    number: 14,
+    name: "إبراهيم",
+    englishName: "Ibrahim",
+    englishNameTranslation: "Abraham",
+    numberOfAyahs: 52,
+  },
+  {
+    number: 15,
+    name: "الحجر",
+    englishName: "Al-Hijr",
+    englishNameTranslation: "Al-Hijr",
+    numberOfAyahs: 99,
+  },
+  {
+    number: 16,
+    name: "النحل",
+    englishName: "An-Nahl",
+    englishNameTranslation: "Les Abeilles",
+    numberOfAyahs: 128,
+  },
+  {
+    number: 17,
+    name: "الإسراء",
+    englishName: "Al-Isra",
+    englishNameTranslation: "Le Voyage Nocturne",
+    numberOfAyahs: 111,
+  },
+  {
+    number: 18,
+    name: "الكهف",
+    englishName: "Al-Kahf",
+    englishNameTranslation: "La Caverne",
+    numberOfAyahs: 110,
+  },
+  {
+    number: 19,
+    name: "مريم",
+    englishName: "Maryam",
+    englishNameTranslation: "Marie",
+    numberOfAyahs: 98,
+  },
+  {
+    number: 20,
+    name: "طه",
+    englishName: "Taha",
+    englishNameTranslation: "Ta-Ha",
+    numberOfAyahs: 135,
+  },
+  {
+    number: 21,
+    name: "الأنبياء",
+    englishName: "Al-Anbiya",
+    englishNameTranslation: "Les Prophètes",
+    numberOfAyahs: 112,
+  },
+  {
+    number: 22,
+    name: "الحج",
+    englishName: "Al-Hajj",
+    englishNameTranslation: "Le Pèlerinage",
+    numberOfAyahs: 78,
+  },
+  {
+    number: 23,
+    name: "المؤمنون",
+    englishName: "Al-Mu'minun",
+    englishNameTranslation: "Les Croyants",
+    numberOfAyahs: 118,
+  },
+  {
+    number: 24,
+    name: "النور",
+    englishName: "An-Nur",
+    englishNameTranslation: "La Lumière",
+    numberOfAyahs: 64,
+  },
+  {
+    number: 25,
+    name: "الفرقان",
+    englishName: "Al-Furqan",
+    englishNameTranslation: "Le Discernement",
+    numberOfAyahs: 77,
+  },
+  {
+    number: 26,
+    name: "الشعراء",
+    englishName: "Ash-Shu'ara",
+    englishNameTranslation: "Les Poètes",
+    numberOfAyahs: 227,
+  },
+  {
+    number: 27,
+    name: "النمل",
+    englishName: "An-Naml",
+    englishNameTranslation: "Les Fourmis",
+    numberOfAyahs: 93,
+  },
+  {
+    number: 28,
+    name: "القصص",
+    englishName: "Al-Qasas",
+    englishNameTranslation: "Le Récit",
+    numberOfAyahs: 88,
+  },
+  {
+    number: 29,
+    name: "العنكبوت",
+    englishName: "Al-'Ankabut",
+    englishNameTranslation: "L'Araignée",
+    numberOfAyahs: 69,
+  },
+  {
+    number: 30,
+    name: "الروم",
+    englishName: "Ar-Rum",
+    englishNameTranslation: "Les Romains",
+    numberOfAyahs: 60,
+  },
+  {
+    number: 31,
+    name: "لقمان",
+    englishName: "Luqman",
+    englishNameTranslation: "Luqman",
+    numberOfAyahs: 34,
+  },
+  {
+    number: 32,
+    name: "السجدة",
+    englishName: "As-Sajdah",
+    englishNameTranslation: "La Prosternation",
+    numberOfAyahs: 30,
+  },
+  {
+    number: 33,
+    name: "الأحزاب",
+    englishName: "Al-Ahzab",
+    englishNameTranslation: "Les Coalisés",
+    numberOfAyahs: 73,
+  },
+  {
+    number: 34,
+    name: "سبإ",
+    englishName: "Saba",
+    englishNameTranslation: "Saba",
+    numberOfAyahs: 54,
+  },
+  {
+    number: 35,
+    name: "فاطر",
+    englishName: "Fatir",
+    englishNameTranslation: "Le Créateur",
+    numberOfAyahs: 45,
+  },
+  {
+    number: 36,
+    name: "يس",
+    englishName: "Yasin",
+    englishNameTranslation: "Ya-Sin",
+    numberOfAyahs: 83,
+  },
+  {
+    number: 37,
+    name: "الصافات",
+    englishName: "As-Saffat",
+    englishNameTranslation: "Les Rangés",
+    numberOfAyahs: 182,
+  },
+  { number: 38, name: "ص", englishName: "Sad", englishNameTranslation: "Sad", numberOfAyahs: 88 },
+  {
+    number: 39,
+    name: "الزمر",
+    englishName: "Az-Zumar",
+    englishNameTranslation: "Les Groupes",
+    numberOfAyahs: 75,
+  },
+  {
+    number: 40,
+    name: "غافر",
+    englishName: "Ghafir",
+    englishNameTranslation: "Le Pardonneur",
+    numberOfAyahs: 85,
+  },
+  {
+    number: 41,
+    name: "فصلت",
+    englishName: "Fussilat",
+    englishNameTranslation: "Les Versets Détaillés",
+    numberOfAyahs: 54,
+  },
+  {
+    number: 42,
+    name: "الشورى",
+    englishName: "Ash-Shura",
+    englishNameTranslation: "La Consultation",
+    numberOfAyahs: 53,
+  },
+  {
+    number: 43,
+    name: "الزخرف",
+    englishName: "Az-Zukhruf",
+    englishNameTranslation: "L'Ornement",
+    numberOfAyahs: 89,
+  },
+  {
+    number: 44,
+    name: "الدخان",
+    englishName: "Ad-Dukhan",
+    englishNameTranslation: "La Fumée",
+    numberOfAyahs: 59,
+  },
+  {
+    number: 45,
+    name: "الجاثية",
+    englishName: "Al-Jathiyah",
+    englishNameTranslation: "L'Agenouillée",
+    numberOfAyahs: 37,
+  },
+  {
+    number: 46,
+    name: "الأحقاف",
+    englishName: "Al-Ahqaf",
+    englishNameTranslation: "Al-Ahqaf",
+    numberOfAyahs: 35,
+  },
+  {
+    number: 47,
+    name: "محمد",
+    englishName: "Muhammad",
+    englishNameTranslation: "Muhammad",
+    numberOfAyahs: 38,
+  },
+  {
+    number: 48,
+    name: "الفتح",
+    englishName: "Al-Fath",
+    englishNameTranslation: "La Victoire Éclatante",
+    numberOfAyahs: 29,
+  },
+  {
+    number: 49,
+    name: "الحجرات",
+    englishName: "Al-Hujurat",
+    englishNameTranslation: "Les Appartements",
+    numberOfAyahs: 18,
+  },
+  { number: 50, name: "ق", englishName: "Qaf", englishNameTranslation: "Qaf", numberOfAyahs: 45 },
+  {
+    number: 51,
+    name: "الذاريات",
+    englishName: "Adh-Dhariyat",
+    englishNameTranslation: "Qui Éparpillent",
+    numberOfAyahs: 60,
+  },
+  {
+    number: 52,
+    name: "الطور",
+    englishName: "At-Tur",
+    englishNameTranslation: "At-Tur",
+    numberOfAyahs: 49,
+  },
+  {
+    number: 53,
+    name: "النجم",
+    englishName: "An-Najm",
+    englishNameTranslation: "L'Étoile",
+    numberOfAyahs: 62,
+  },
+  {
+    number: 54,
+    name: "القمر",
+    englishName: "Al-Qamar",
+    englishNameTranslation: "La Lune",
+    numberOfAyahs: 55,
+  },
+  {
+    number: 55,
+    name: "الرحمن",
+    englishName: "Ar-Rahman",
+    englishNameTranslation: "Le Tout Miséricordieux",
+    numberOfAyahs: 78,
+  },
+  {
+    number: 56,
+    name: "الواقعة",
+    englishName: "Al-Waqi'ah",
+    englishNameTranslation: "L'Événement",
+    numberOfAyahs: 96,
+  },
+  {
+    number: 57,
+    name: "الحديد",
+    englishName: "Al-Hadid",
+    englishNameTranslation: "Le Fer",
+    numberOfAyahs: 29,
+  },
+  {
+    number: 58,
+    name: "المجادلة",
+    englishName: "Al-Mujadila",
+    englishNameTranslation: "La Discussion",
+    numberOfAyahs: 22,
+  },
+  {
+    number: 59,
+    name: "الحشر",
+    englishName: "Al-Hashr",
+    englishNameTranslation: "L'Exode",
+    numberOfAyahs: 24,
+  },
+  {
+    number: 60,
+    name: "الممتحنة",
+    englishName: "Al-Mumtahanah",
+    englishNameTranslation: "L'Éprouvée",
+    numberOfAyahs: 13,
+  },
+  {
+    number: 61,
+    name: "الصف",
+    englishName: "As-Saff",
+    englishNameTranslation: "Le Rang",
+    numberOfAyahs: 14,
+  },
+  {
+    number: 62,
+    name: "الجمعة",
+    englishName: "Al-Jumu'ah",
+    englishNameTranslation: "Le Vendredi",
+    numberOfAyahs: 11,
+  },
+  {
+    number: 63,
+    name: "المنافقون",
+    englishName: "Al-Munafiqun",
+    englishNameTranslation: "Les Hypocrites",
+    numberOfAyahs: 11,
+  },
+  {
+    number: 64,
+    name: "التغابن",
+    englishName: "At-Taghabun",
+    englishNameTranslation: "La Grande Perte",
+    numberOfAyahs: 18,
+  },
+  {
+    number: 65,
+    name: "الطلاق",
+    englishName: "At-Talaq",
+    englishNameTranslation: "Le Divorce",
+    numberOfAyahs: 12,
+  },
+  {
+    number: 66,
+    name: "التحريم",
+    englishName: "At-Tahrim",
+    englishNameTranslation: "L'Interdiction",
+    numberOfAyahs: 12,
+  },
+  {
+    number: 67,
+    name: "الملك",
+    englishName: "Al-Mulk",
+    englishNameTranslation: "La Royauté",
+    numberOfAyahs: 30,
+  },
+  {
+    number: 68,
+    name: "القلم",
+    englishName: "Al-Qalam",
+    englishNameTranslation: "La Plume",
+    numberOfAyahs: 52,
+  },
+  {
+    number: 69,
+    name: "الحاقة",
+    englishName: "Al-Haqqah",
+    englishNameTranslation: "L'Inévitable",
+    numberOfAyahs: 52,
+  },
+  {
+    number: 70,
+    name: "المعارج",
+    englishName: "Al-Ma'arij",
+    englishNameTranslation: "Les Voies d'Ascension",
+    numberOfAyahs: 44,
+  },
+  { number: 71, name: "نوح", englishName: "Nuh", englishNameTranslation: "Noé", numberOfAyahs: 28 },
+  {
+    number: 72,
+    name: "الجن",
+    englishName: "Al-Jinn",
+    englishNameTranslation: "Les Djinns",
+    numberOfAyahs: 28,
+  },
+  {
+    number: 73,
+    name: "المزمل",
+    englishName: "Al-Muzzammil",
+    englishNameTranslation: "L'Enveloppé",
+    numberOfAyahs: 20,
+  },
+  {
+    number: 74,
+    name: "المدثر",
+    englishName: "Al-Muddaththir",
+    englishNameTranslation: "Le Revêtu d'un Manteau",
+    numberOfAyahs: 56,
+  },
+  {
+    number: 75,
+    name: "القيامة",
+    englishName: "Al-Qiyamah",
+    englishNameTranslation: "La Résurrection",
+    numberOfAyahs: 40,
+  },
+  {
+    number: 76,
+    name: "الإنسان",
+    englishName: "Al-Insan",
+    englishNameTranslation: "L'Homme",
+    numberOfAyahs: 31,
+  },
+  {
+    number: 77,
+    name: "المرسلات",
+    englishName: "Al-Mursalat",
+    englishNameTranslation: "Les Envoyés",
+    numberOfAyahs: 50,
+  },
+  {
+    number: 78,
+    name: "النبأ",
+    englishName: "An-Naba",
+    englishNameTranslation: "La Nouvelle",
+    numberOfAyahs: 40,
+  },
+  {
+    number: 79,
+    name: "النازعات",
+    englishName: "An-Nazi'at",
+    englishNameTranslation: "Les Anges qui Arrachent",
+    numberOfAyahs: 46,
+  },
+  {
+    number: 80,
+    name: "عبس",
+    englishName: "'Abasa",
+    englishNameTranslation: "Il s'est Renfrogné",
+    numberOfAyahs: 42,
+  },
+  {
+    number: 81,
+    name: "التكوير",
+    englishName: "At-Takwir",
+    englishNameTranslation: "L'Obscurcissement",
+    numberOfAyahs: 29,
+  },
+  {
+    number: 82,
+    name: "الانفطار",
+    englishName: "Al-Infitar",
+    englishNameTranslation: "La Rupture",
+    numberOfAyahs: 19,
+  },
+  {
+    number: 83,
+    name: "المطففين",
+    englishName: "Al-Mutaffifin",
+    englishNameTranslation: "Les Fraudeurs",
+    numberOfAyahs: 36,
+  },
+  {
+    number: 84,
+    name: "الانشقاق",
+    englishName: "Al-Inshiqaq",
+    englishNameTranslation: "La Fissuration",
+    numberOfAyahs: 25,
+  },
+  {
+    number: 85,
+    name: "البروج",
+    englishName: "Al-Buruj",
+    englishNameTranslation: "Les Constellations",
+    numberOfAyahs: 22,
+  },
+  {
+    number: 86,
+    name: "الطارق",
+    englishName: "At-Tariq",
+    englishNameTranslation: "L'Astre Nocturne",
+    numberOfAyahs: 17,
+  },
+  {
+    number: 87,
+    name: "الأعلى",
+    englishName: "Al-A'la",
+    englishNameTranslation: "Le Très-Haut",
+    numberOfAyahs: 19,
+  },
+  {
+    number: 88,
+    name: "الغاشية",
+    englishName: "Al-Ghashiyah",
+    englishNameTranslation: "L'Enveloppante",
+    numberOfAyahs: 26,
+  },
+  {
+    number: 89,
+    name: "الفجر",
+    englishName: "Al-Fajr",
+    englishNameTranslation: "L'Aube",
+    numberOfAyahs: 30,
+  },
+  {
+    number: 90,
+    name: "البلد",
+    englishName: "Al-Balad",
+    englishNameTranslation: "La Cité",
+    numberOfAyahs: 20,
+  },
+  {
+    number: 91,
+    name: "الشمس",
+    englishName: "Ash-Shams",
+    englishNameTranslation: "Le Soleil",
+    numberOfAyahs: 15,
+  },
+  {
+    number: 92,
+    name: "الليل",
+    englishName: "Al-Layl",
+    englishNameTranslation: "La Nuit",
+    numberOfAyahs: 21,
+  },
+  {
+    number: 93,
+    name: "الضحى",
+    englishName: "Ad-Duha",
+    englishNameTranslation: "Le Jour Montant",
+    numberOfAyahs: 11,
+  },
+  {
+    number: 94,
+    name: "الشرح",
+    englishName: "Ash-Sharh",
+    englishNameTranslation: "L'Ouverture",
+    numberOfAyahs: 8,
+  },
+  {
+    number: 95,
+    name: "التين",
+    englishName: "At-Tin",
+    englishNameTranslation: "Le Figuier",
+    numberOfAyahs: 8,
+  },
+  {
+    number: 96,
+    name: "العلق",
+    englishName: "Al-'Alaq",
+    englishNameTranslation: "L'Adhérence",
+    numberOfAyahs: 19,
+  },
+  {
+    number: 97,
+    name: "القدر",
+    englishName: "Al-Qadr",
+    englishNameTranslation: "La Destinée",
+    numberOfAyahs: 5,
+  },
+  {
+    number: 98,
+    name: "البينة",
+    englishName: "Al-Bayyinah",
+    englishNameTranslation: "La Preuve",
+    numberOfAyahs: 8,
+  },
+  {
+    number: 99,
+    name: "الزلزلة",
+    englishName: "Az-Zalzalah",
+    englishNameTranslation: "Le Secousse",
+    numberOfAyahs: 8,
+  },
+  {
+    number: 100,
+    name: "العاديات",
+    englishName: "Al-'Adiyat",
+    englishNameTranslation: "Les Coursiers",
+    numberOfAyahs: 11,
+  },
+  {
+    number: 101,
+    name: "القارعة",
+    englishName: "Al-Qari'ah",
+    englishNameTranslation: "Le Fracas",
+    numberOfAyahs: 11,
+  },
+  {
+    number: 102,
+    name: "التكاثر",
+    englishName: "At-Takathur",
+    englishNameTranslation: "La Course aux Richesses",
+    numberOfAyahs: 8,
+  },
+  {
+    number: 103,
+    name: "العصر",
+    englishName: "Al-'Asr",
+    englishNameTranslation: "Le Temps",
+    numberOfAyahs: 3,
+  },
+  {
+    number: 104,
+    name: "الهمزة",
+    englishName: "Al-Humazah",
+    englishNameTranslation: "Les Calomniateurs",
+    numberOfAyahs: 9,
+  },
+  {
+    number: 105,
+    name: "الفيل",
+    englishName: "Al-Fil",
+    englishNameTranslation: "L'Éléphant",
+    numberOfAyahs: 5,
+  },
+  {
+    number: 106,
+    name: "قريش",
+    englishName: "Quraysh",
+    englishNameTranslation: "Quraysh",
+    numberOfAyahs: 4,
+  },
+  {
+    number: 107,
+    name: "الماعون",
+    englishName: "Al-Ma'un",
+    englishNameTranslation: "L'Ustensile",
+    numberOfAyahs: 7,
+  },
+  {
+    number: 108,
+    name: "الكوثر",
+    englishName: "Al-Kawthar",
+    englishNameTranslation: "L me-Abondance",
+    numberOfAyahs: 3,
+  },
+  {
+    number: 109,
+    name: "الكافرون",
+    englishName: "Al-Kafirun",
+    englishNameTranslation: "Les Infidèles",
+    numberOfAyahs: 6,
+  },
+  {
+    number: 110,
+    name: "النصر",
+    englishName: "An-Nasr",
+    englishNameTranslation: "Les Secours",
+    numberOfAyahs: 3,
+  },
+  {
+    number: 111,
+    name: "المسد",
+    englishName: "Al-Masad",
+    englishNameTranslation: "Les Fibres",
+    numberOfAyahs: 5,
+  },
+  {
+    number: 112,
+    name: "الإخلاص",
+    englishName: "Al-Ikhlas",
+    englishNameTranslation: "Le Monothéisme Pur",
+    numberOfAyahs: 4,
+  },
+  {
+    number: 113,
+    name: "الفلق",
+    englishName: "Al-Falaq",
+    englishNameTranslation: "L'Aube Naissante",
+    numberOfAyahs: 5,
+  },
+  {
+    number: 114,
+    name: "الناس",
+    englishName: "An-Nas",
+    englishNameTranslation: "Les Hommes",
+    numberOfAyahs: 6,
+  },
+];
+
+export function getSurahMeta(n: number): QuranSurahMeta | undefined {
+  return ALL_SURAHS.find((s) => s.number === n);
+}
+
+/**
+ * Cleans the Arabic text for Ayah 1 of Surahs 2..114 (except 9 At-Tawbah).
+ * In the API Uthmani edition, the Bismillah header is prepended to Ayah 1 text.
+ * Stripping it allows Verse 1 to display ONLY its actual verse text (e.g. "الم")
+ * while the Basmala is rendered as a standalone header at the top of the Surah.
+ */
+export function cleanAyahText(
+  surahNumber: number,
+  ayahNumberInSurah: number,
+  text: string,
+): string {
+  // Surah 9 (At-Tawbah) has no Bismillah; verses other than 1 are unaffected
+  if (surahNumber === 9 || ayahNumberInSurah !== 1) {
+    return text;
+  }
+
+  // Look for end of Bismillah phrase in Uthmani script (ٱلرَّحِيمِ / الرَّحِيمِ)
+  const marker1 = "ٱلرَّحِيمِ";
+  const markerIndex1 = text.indexOf(marker1);
+  if (markerIndex1 !== -1 && markerIndex1 < 60) {
+    const cleaned = text.slice(markerIndex1 + marker1.length).trim();
+    // For Surah 1, this removes the duplicate Basmala from verse 1 content
+    // while the general Basmala header remains at the top.
+    return cleaned;
+  }
+
+  const marker2 = "الرَّحِيمِ";
+  const markerIndex2 = text.indexOf(marker2);
+  if (markerIndex2 !== -1 && markerIndex2 < 60) {
+    const cleaned = text.slice(markerIndex2 + marker2.length).trim();
+    return cleaned;
+  }
+
+  // Regex fallback matching Bismillah with optional diacritics / unicode characters
+  const cleanedByRegex = text
+    .replace(/^بِسْمِ\s+[ٱا]?للَّ?هِ\s+[ٱا]?لرَّحْمَٰ?نِ\s+[ٱا]?لرَّحِيمِ\s*/u, "")
+    .trim();
+
+  return cleanedByRegex;
+}

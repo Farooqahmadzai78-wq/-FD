@@ -1,0 +1,272 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Wall & Floor Gradients -->
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5EFE6" />
+      <stop offset="70%" stop-color="#EBE3D5" />
+      <stop offset="100%" stop-color="#DFD5C3" />
+    </linearGradient>
+
+    <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#121D33" />
+      <stop offset="60%" stop-color="#1F304E" />
+      <stop offset="100%" stop-color="#2D4468" />
+    </linearGradient>
+
+    <linearGradient id="woodFloor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4BBA2" />
+      <stop offset="100%" stop-color="#B3987E" />
+    </linearGradient>
+
+    <linearGradient id="wardrobeWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D8C2AA" />
+      <stop offset="100%" stop-color="#C5AD94" />
+    </linearGradient>
+
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF3CD" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#FFE4A0" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#FFD175" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="pendantGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF8E0" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#FFE099" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFC857" stop-opacity="0" />
+    </radialGradient>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="5" stdDeviation="5" flood-color="#544738" flood-opacity="0.15" />
+    </filter>
+
+    <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+  </defs>
+
+  <!-- Room Wall Background -->
+  <rect width="800" height="800" fill="url(#wallGrad)" />
+
+  <!-- Geometric Arabesque Wall Ornamentation (Right Wall) -->
+  <g opacity="0.15" stroke="#7A6853" stroke-width="1.5" fill="none" transform="translate(420, 40)">
+    <pattern id="arabesque" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M30,0 L60,30 L30,60 L0,30 Z" />
+      <path d="M30,10 L50,30 L30,50 L10,30 Z" />
+      <circle cx="30" cy="30" r="8" />
+    </pattern>
+    <rect x="0" y="0" width="350" height="400" fill="url(#arabesque)" />
+  </g>
+
+  <!-- Wooden Floor with Perspective Planks -->
+  <g id="floor">
+    <path d="M0,580 L800,580 L800,800 L0,800 Z" fill="url(#woodFloor)" />
+    <!-- Floor Planks & Perspective Lines -->
+    <line x1="0" y1="620" x2="800" y2="620" stroke="#A3876D" stroke-width="1.5" />
+    <line x1="0" y1="670" x2="800" y2="670" stroke="#A3876D" stroke-width="1.5" />
+    <line x1="0" y1="730" x2="800" y2="730" stroke="#A3876D" stroke-width="1.5" />
+    
+    <line x1="120" y1="580" x2="60" y2="800" stroke="#B89C82" stroke-width="1" opacity="0.6" />
+    <line x1="280" y1="580" x2="220" y2="800" stroke="#B89C82" stroke-width="1" opacity="0.6" />
+    <line x1="450" y1="580" x2="410" y2="800" stroke="#B89C82" stroke-width="1" opacity="0.6" />
+    <line x1="620" y1="580" x2="600" y2="800" stroke="#B89C82" stroke-width="1" opacity="0.6" />
+  </g>
+
+  <!-- Islamic Prayer Rug (Sajjada) on Floor -->
+  <g transform="translate(180, 600)" filter="url(#softShadow)">
+    <polygon points="0,20 400,20 440,150 -40,150" fill="#3A536B" />
+    <!-- Outer Border -->
+    <polygon points="10,25 390,25 425,142 -25,142" fill="none" stroke="#D1C2A5" stroke-width="3" />
+    <!-- Mihrab Arch Pattern inside Rug -->
+    <path d="M120,135 L120,60 Q200,30 280,60 L280,135 Z" fill="#2E445A" stroke="#CBB793" stroke-width="2" />
+    <path d="M140,135 L140,70 Q200,45 260,70 L260,135 Z" fill="none" stroke="#CBB793" stroke-width="1.5" stroke-dasharray="4,3" />
+    <!-- Rug Fringes -->
+    <line x1="-38" y1="150" x2="-45" y2="158" stroke="#E3D5C1" stroke-width="2" />
+    <line x1="438" y1="150" x2="445" y2="158" stroke="#E3D5C1" stroke-width="2" />
+  </g>
+
+  <!-- Window & Night View (Left Wall) -->
+  <g id="window" transform="translate(30, 20)">
+    <!-- Window Frame Outer -->
+    <rect x="0" y="0" width="220" height="480" rx="12" fill="#EAE0D2" stroke="#D0C2B0" stroke-width="8" filter="url(#softShadow)" />
+    <!-- Night Sky View Inside -->
+    <rect x="12" y="12" width="196" height="456" rx="8" fill="url(#nightSky)" />
+
+    <!-- Crescent Moon -->
+    <path d="M140,80 A22,22 0 1,0 162,102 A18,18 0 1,1 140,80 Z" fill="#FFF2C6" />
+    <!-- Moon Glow -->
+    <circle cx="148" cy="94" r="30" fill="#FFF2C6" opacity="0.15" filter="url(#blurGlow)" />
+
+    <!-- Stars in Sky -->
+    <circle cx="40" cy="60" r="1.5" fill="#FFFFFF" />
+    <circle cx="80" cy="110" r="2" fill="#FFFFFF" opacity="0.9" />
+    <circle cx="110" cy="50" r="1.2" fill="#FFFFFF" opacity="0.8" />
+    <circle cx="170" cy="160" r="1.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="50" cy="180" r="1.5" fill="#FFFFFF" opacity="0.7" />
+    <circle cx="130" cy="220" r="2" fill="#FFFFFF" opacity="0.9" />
+
+    <!-- Distant Dark Trees -->
+    <path d="M12,468 Q30,400 50,420 Q80,380 110,410 Q140,370 180,420 Q200,390 208,468 Z" fill="#0D1624" />
+
+    <!-- Window Divider Frame Grids -->
+    <line x1="110" y1="12" x2="110" y2="468" stroke="#E0D3C1" stroke-width="6" />
+    <line x1="12" y1="240" x2="208" y2="240" stroke="#E0D3C1" stroke-width="6" />
+
+    <!-- Sheer White Curtains -->
+    <path d="M2,12 Q40,180 -10,468 L-25,468 L-25,12 Z" fill="#FFFFFF" opacity="0.65" />
+    <path d="M218,12 Q180,200 230,468 L245,468 L245,12 Z" fill="#FFFFFF" opacity="0.65" />
+  </g>
+
+  <!-- Potted Fiddle Leaf Fig Plant (Bottom Left) -->
+  <g transform="translate(15, 520)" filter="url(#softShadow)">
+    <!-- Ceramic Pot -->
+    <path d="M30,160 L110,160 L120,240 L20,240 Z" fill="#E8DDD0" stroke="#D1C3B3" stroke-width="2" />
+    <ellipse cx="70" cy="160" rx="40" ry="10" fill="#D1C3B3" />
+    <ellipse cx="70" cy="160" rx="36" ry="8" fill="#5E4B3C" />
+
+    <!-- Stem & Leaves -->
+    <path d="M70,160 Q65,100 70,20" stroke="#48382B" stroke-width="7" stroke-linecap="round" fill="none" />
+    <!-- Leaf 1 (Left Low) -->
+    <path d="M68,130 Q10,110 0,135 Q20,155 68,140 Z" fill="#3D5A45" stroke="#2B4232" stroke-width="1.5" />
+    <!-- Leaf 2 (Right Low) -->
+    <path d="M72,120 Q130,100 140,125 Q120,145 72,130 Z" fill="#45664E" stroke="#2B4232" stroke-width="1.5" />
+    <!-- Leaf 3 (Left Mid) -->
+    <path d="M68,80 Q0,60 -10,85 Q10,105 68,90 Z" fill="#4B6E54" stroke="#2B4232" stroke-width="1.5" />
+    <!-- Leaf 4 (Right Mid) -->
+    <path d="M72,70 Q135,45 145,70 Q125,92 72,80 Z" fill="#3D5A45" stroke="#2B4232" stroke-width="1.5" />
+    <!-- Leaf 5 (Top Left) -->
+    <path d="M70,30 Q15,0 5,25 Q25,45 70,38 Z" fill="#537A5D" stroke="#2B4232" stroke-width="1.5" />
+    <!-- Leaf 6 (Top Right) -->
+    <path d="M70,25 Q125,-5 135,20 Q115,40 70,32 Z" fill="#45664E" stroke="#2B4232" stroke-width="1.5" />
+  </g>
+
+  <!-- Main Wardrobe Closet (Center Background) -->
+  <g transform="translate(330, 120)" filter="url(#softShadow)">
+    <!-- Outer Frame -->
+    <rect x="0" y="0" width="300" height="460" rx="6" fill="url(#wardrobeWood)" stroke="#A69078" stroke-width="3" />
+
+    <!-- Closed Left Door -->
+    <rect x="6" y="8" width="140" height="444" rx="3" fill="#FAF6F0" stroke="#D1C3B3" stroke-width="1.5" />
+    <rect x="136" y="180" width="4" height="80" rx="2" fill="#CBB292" />
+
+    <!-- Open Right Section Frame -->
+    <rect x="150" y="8" width="144" height="444" fill="#E8DBCB" />
+    <!-- Open Door Swung Out -->
+    <polygon points="294,8 370,30 370,470 294,452" fill="#FAF6F0" stroke="#D1C3B3" stroke-width="1.5" filter="url(#softShadow)" />
+    <rect x="302" y="190" width="3" height="80" fill="#CBB292" />
+
+    <!-- Inside Shelves & Clothes Rail -->
+    <rect x="150" y="80" width="144" height="8" fill="#C2AD96" />
+    <rect x="150" y="320" width="144" height="8" fill="#C2AD96" />
+    <line x1="150" y1="95" x2="294" y2="95" stroke="#8A7560" stroke-width="3" />
+
+    <!-- Folded Clothes on Top Shelf -->
+    <rect x="165" y="52" width="70" height="12" rx="3" fill="#608285" />
+    <rect x="160" y="64" width="80" height="14" rx="3" fill="#D2C0A5" />
+
+    <!-- Folded Clothes on Lower Shelf -->
+    <rect x="170" y="290" width="75" height="13" rx="3" fill="#D9C5B2" />
+    <rect x="165" y="303" width="85" height="15" rx="3" fill="#789396" />
+
+    <!-- Hanging Clothes inside Open Closet -->
+    <!-- Hanger 1 -->
+    <path d="M200,95 L180,110 L220,110 Z" fill="none" stroke="#A89278" stroke-width="2" />
+    <path d="M180,110 L180,260 L220,260 L220,110 Z" fill="#87A0A3" opacity="0.9" />
+
+    <!-- Hanger 2 -->
+    <path d="M240,95 L220,110 L260,110 Z" fill="none" stroke="#A89278" stroke-width="2" />
+    <path d="M220,110 L220,270 L260,270 L260,110 Z" fill="#E5DACD" />
+
+    <!-- Qamis / Thobe Hanging on Outside Door Hook -->
+    <circle cx="45" cy="160" r="5" fill="#CBB292" />
+    <!-- Hanger -->
+    <path d="M45,160 L0,180 L90,180 Z" fill="none" stroke="#A89278" stroke-width="2.5" />
+    <!-- Light Beige Qamis / Robe -->
+    <path d="M15,180 L0,220 L25,220 L20,440 L70,440 L65,220 L90,220 L75,180 Z" fill="#F4EFE6" stroke="#D8CBBA" stroke-width="2" filter="url(#softShadow)" />
+    <!-- Qamis Neck Collar & Placket Detail -->
+    <path d="M38,180 L45,195 L52,180" fill="none" stroke="#C4B39F" stroke-width="1.5" />
+    <line x1="45" y1="195" x2="45" y2="240" stroke="#C4B39F" stroke-width="1.5" />
+    <rect x="52" y="200" width="10" height="12" rx="1" fill="none" stroke="#C4B39F" stroke-width="1" />
+  </g>
+
+  <!-- Armchair with Folded Clothes (Center-Left Foreground) -->
+  <g transform="translate(160, 410)" filter="url(#softShadow)">
+    <!-- Wooden Chair Legs -->
+    <line x1="30" y1="150" x2="10" y2="240" stroke="#8A6F54" stroke-width="8" stroke-linecap="round" />
+    <line x1="170" y1="150" x2="200" y2="240" stroke="#8A6F54" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Chair Wooden Frame & Arms -->
+    <path d="M20,60 Q10,130 25,150 Q100,160 175,150 Q190,130 180,60" fill="none" stroke="#9C8063" stroke-width="9" stroke-linecap="round" />
+
+    <!-- Upholstered Back & Seat Cushion -->
+    <path d="M35,30 Q100,20 165,30 Q175,100 165,145 Q100,155 35,145 Z" fill="#F7F3EC" stroke="#E3DACF" stroke-width="2" />
+
+    <!-- Stack of Folded Shirts/Clothes on Chair Seat -->
+    <!-- Bottom Shirt (Teal/Sage Green) -->
+    <rect x="50" y="115" width="100" height="18" rx="4" fill="#5C7A78" stroke="#486160" stroke-width="1" />
+    <!-- Middle Shirt (Dusty Rose/Muted Clay) -->
+    <rect x="53" y="100" width="94" height="17" rx="4" fill="#AA8273" stroke="#8F6A5C" stroke-width="1" />
+    <!-- Top Shirt (Beige/Cream) -->
+    <rect x="55" y="85" width="90" height="17" rx="4" fill="#EAE1D5" stroke="#D1C3B3" stroke-width="1" />
+    <!-- Fold Lines -->
+    <line x1="60" y1="93" x2="140" y2="93" stroke="#D1C3B3" stroke-width="1" />
+  </g>
+
+  <!-- Cozy Bed (Right Foreground) -->
+  <g transform="translate(560, 400)" filter="url(#softShadow)">
+    <!-- Headboard -->
+    <rect x="180" y="-80" width="80" height="260" rx="8" fill="#ECE3D5" stroke="#D5C7B4" stroke-width="2" />
+
+    <!-- Bed Frame Wood Base -->
+    <rect x="0" y="140" width="240" height="30" fill="#9C8063" rx="4" />
+    <line x1="40" y1="170" x2="35" y2="210" stroke="#8A6F54" stroke-width="10" stroke-linecap="round" />
+
+    <!-- Mattress & Crisp White Duvet -->
+    <path d="M-10,80 Q80,70 190,70 L220,150 L-30,150 Z" fill="#FAF8F5" stroke="#E8E0D5" stroke-width="2" />
+    <!-- Folded Teal Accent Blanket at Foot of Bed -->
+    <path d="M110,73 Q150,71 190,71 L210,150 L120,150 Z" fill="#4E7072" opacity="0.9" />
+
+    <!-- Large White Pillow -->
+    <ellipse cx="170" cy="50" rx="45" ry="22" fill="#FFFFFF" stroke="#E3DACF" stroke-width="1.5" transform="rotate(-10 170 50)" />
+  </g>
+
+  <!-- Nightstand with Table Lamp (Right) -->
+  <g transform="translate(610, 480)" filter="url(#softShadow)">
+    <!-- Nightstand Base -->
+    <rect x="0" y="40" width="110" height="100" rx="4" fill="#FAF6F0" stroke="#D5C7B4" stroke-width="2" />
+    <line x1="10" y1="85" x2="100" y2="85" stroke="#E3DACF" stroke-width="1.5" />
+    <!-- Drawer Handle -->
+    <rect x="42" y="60" width="26" height="5" rx="2" fill="#CBB292" />
+
+    <!-- Table Lamp -->
+    <!-- Lamp Base -->
+    <ellipse cx="55" cy="38" rx="18" ry="8" fill="#C2B099" />
+    <!-- Lamp Stem -->
+    <line x1="55" y1="38" x2="55" y2="-10" stroke="#B09D85" stroke-width="4" />
+    <!-- Lamp Shade -->
+    <polygon points="35,-10 75,-10 85,-45 25,-45" fill="#FFF8EB" stroke="#E3DACF" stroke-width="1.5" />
+    <!-- Glowing Light Bulb Glow -->
+    <circle cx="55" cy="-25" r="70" fill="url(#lampGlow)" />
+
+    <!-- Small Succulent Pot on Nightstand -->
+    <rect x="15" y="22" width="16" height="16" rx="2" fill="#E5DACD" />
+    <circle cx="23" cy="18" r="6" fill="#618265" />
+  </g>
+
+  <!-- Hanging Pendant Light from Ceiling -->
+  <g transform="translate(690, 0)">
+    <line x1="0" y1="0" x2="0" y2="150" stroke="#CBB292" stroke-width="2" />
+    <!-- Pendant Shade -->
+    <path d="M-12,150 L12,150 L18,170 L-18,170 Z" fill="#CBB292" />
+    <circle cx="0" cy="175" r="10" fill="#FFF3CD" />
+    <!-- Pendant Glow -->
+    <circle cx="0" cy="175" r="90" fill="url(#pendantGlow)" />
+  </g>
+
+  <!-- Four-Point Star Sparkle in Bottom Right -->
+  <g transform="translate(700, 690)" fill="#FFFFFF" opacity="0.85">
+    <path d="M0,-16 Q0,0 16,0 Q0,0 0,16 Q0,0 -16,0 Q0,0 0,-16 Z" />
+  </g>
+
+  <!-- Soft Ambient Evening Glow Overlay -->
+  <rect width="800" height="800" fill="#FFE8C2" opacity="0.06" pointer-events="none" />
+</svg>

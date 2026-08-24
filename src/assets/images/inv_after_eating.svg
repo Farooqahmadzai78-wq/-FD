@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Background & Light Gradients -->
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBF1F5" />
+      <stop offset="60%" stop-color="#E3EAEF" />
+      <stop offset="100%" stop-color="#D6E0E7" />
+    </linearGradient>
+
+    <linearGradient id="skyGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FCECE1" />
+      <stop offset="40%" stop-color="#EBF2F7" />
+      <stop offset="100%" stop-color="#D6E5F3" />
+    </linearGradient>
+
+    <linearGradient id="sunBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF7" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#FFF5E4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFF0D6" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="tableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EBE1D3" />
+      <stop offset="100%" stop-color="#D8C8B5" />
+    </linearGradient>
+
+    <linearGradient id="woodLeg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9B8A3" />
+      <stop offset="100%" stop-color="#B3A08A" />
+    </linearGradient>
+
+    <linearGradient id="lanternGlow" x1="50%" y1="50%" r="50%">
+      <stop offset="0%" stop-color="#FFEBB3" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#FFD685" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#FFC857" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="sunSpot" cx="20%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FFF3DC" stop-opacity="0" />
+    </radialGradient>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="6" stdDeviation="6" flood-color="#7B8B99" flood-opacity="0.15" />
+    </filter>
+
+    <filter id="blurLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+  </defs>
+
+  <!-- Room Wall Background -->
+  <rect width="800" height="800" fill="url(#wallGrad)" />
+
+  <!-- Window Frame Outer -->
+  <g transform="translate(60, 40)">
+    <!-- Outside Sky View -->
+    <rect x="20" y="20" width="310" height="380" rx="15" fill="url(#skyGrad)" />
+    
+    <!-- Distant Palm Trees & Garden -->
+    <!-- Palm 1 -->
+    <path d="M140,240 Q145,180 150,140" stroke="#9BB29B" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M150,140 Q110,120 90,135 M150,140 Q120,105 105,95 M150,140 Q160,95 180,105 M150,140 Q185,120 200,135 M150,140 Q170,150 185,165" stroke="#8CA88C" stroke-width="4" stroke-linecap="round" fill="none" />
+    <!-- Palm 2 -->
+    <path d="M250,260 Q255,200 260,160" stroke="#ADC2AD" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M260,160 Q230,145 210,155 M260,160 Q240,130 225,120 M260,160 Q275,120 290,130 M260,160 Q295,145 305,155" stroke="#9BB29B" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    
+    <!-- Soft Hills & Foliage at Window Sill -->
+    <ellipse cx="100" cy="380" rx="120" ry="40" fill="#B2C7B2" opacity="0.7" />
+    <ellipse cx="240" cy="380" rx="110" ry="35" fill="#A1BBA1" opacity="0.8" />
+
+    <!-- Potted Plant on Sill -->
+    <rect x="50" y="320" width="45" height="40" rx="4" fill="#E8DDD2" />
+    <path d="M72,320 Q60,280 40,260 M72,320 Q85,275 100,255 M72,320 Q50,295 30,300 M72,320 Q95,295 110,305" stroke="#688A68" stroke-width="6" stroke-linecap="round" fill="none" />
+
+    <!-- Flower Vase on Sill -->
+    <ellipse cx="260" cy="345" rx="10" ry="15" fill="#FFFFFF" opacity="0.8" />
+    <path d="M260,330 Q255,300 250,280 M260,330 Q265,295 275,275" stroke="#8A9A8A" stroke-width="2" fill="none" />
+    <circle cx="250" cy="278" r="4" fill="#FFFFFF" />
+    <circle cx="275" cy="273" r="5" fill="#FFFFFF" />
+
+    <!-- Window Wooden Arch/Frame -->
+    <rect x="10" y="10" width="330" height="400" rx="20" fill="none" stroke="#C5B29D" stroke-width="12" filter="url(#softShadow)" />
+    <!-- Window Glass Panes Grid -->
+    <line x1="175" y1="10" x2="175" y2="410" stroke="#D1C3B3" stroke-width="8" />
+    <line x1="10" y1="210" x2="340" y2="210" stroke="#D1C3B3" stroke-width="8" />
+    <!-- Window Inner Trim -->
+    <rect x="18" y="18" width="314" height="384" rx="14" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.6" />
+  </g>
+
+  <!-- Sheer Flowing Curtains -->
+  <g opacity="0.85">
+    <!-- Left Curtain -->
+    <path d="M50,30 Q90,180 40,480 L10,480 L10,30 Z" fill="#FFFFFF" opacity="0.4" />
+    <!-- Right Curtain Blowing in Wind -->
+    <path d="M380,30 Q420,150 580,280 Q480,240 400,480 L350,480 Q390,200 370,30 Z" fill="#FFFFFF" opacity="0.6" />
+    <path d="M390,30 Q440,160 620,270 Q510,230 420,480 Z" fill="#F7F9FA" opacity="0.4" />
+  </g>
+
+  <!-- Wall Shelf in Top Right with Ramadan Lantern -->
+  <g transform="translate(620, 160)" filter="url(#softShadow)">
+    <!-- Wooden Shelf -->
+    <rect x="-40" y="80" width="160" height="14" rx="3" fill="#C5B29D" />
+    <!-- Fanous / Traditional Lantern -->
+    <!-- Glow -->
+    <circle cx="40" cy="20" r="50" fill="url(#lanternGlow)" />
+    <!-- Lantern Top Hook & Dome -->
+    <path d="M40, -10 A8,8 0 1,1 40,-26 A8,8 0 1,1 40,-10" fill="none" stroke="#B8944B" stroke-width="3" />
+    <path d="M25,5 Q40,-10 55,5 L50,15 L30,15 Z" fill="#D4AF37" stroke="#A6812C" stroke-width="1.5" />
+    <!-- Glass Body -->
+    <path d="M28,15 L52,15 L58,55 L22,55 Z" fill="#FFF8E7" stroke="#A6812C" stroke-width="2" />
+    <!-- Glass Pattern / Pattern Lines -->
+    <line x1="40" y1="15" x2="40" y2="55" stroke="#D4AF37" stroke-width="1.5" />
+    <line x1="28" y1="15" x2="58" y2="55" stroke="#D4AF37" stroke-width="1" />
+    <line x1="52" y1="15" x2="22" y2="55" stroke="#D4AF37" stroke-width="1" />
+    <!-- Base -->
+    <rect x="20" y="55" width="40" height="12" rx="2" fill="#D4AF37" stroke="#A6812C" stroke-width="1.5" />
+    <!-- Small Woven Basket next to lantern -->
+    <path d="M80,40 L110,40 L105,78 L85,78 Z" fill="#D1B28C" stroke="#B3936B" stroke-width="2" />
+  </g>
+
+  <!-- Sunlight Rays Across Room -->
+  <polygon points="120,40 800,450 800,800 0,800 0,350" fill="url(#sunBeam)" />
+  <polygon points="200,40 800,380 800,600 0,200" fill="url(#sunBeam)" opacity="0.7" />
+
+  <!-- Dining Table Surface in Foreground -->
+  <g id="table">
+    <!-- Table Top -->
+    <path d="M0,520 L800,520 L800,800 L0,800 Z" fill="url(#tableGrad)" filter="url(#softShadow)" />
+    <!-- Table Bevel/Edge Rim -->
+    <rect x="0" y="520" width="800" height="16" fill="#D1C0AA" />
+
+    <!-- Table Leg Left -->
+    <rect x="40" y="536" width="40" height="264" fill="url(#woodLeg)" />
+  </g>
+
+  <!-- Fabric Placemat on Table -->
+  <g transform="translate(110, 560)">
+    <!-- Placemat Base -->
+    <polygon points="0,60 700,20 640,240 -40,280" fill="#FAF6F0" filter="url(#softShadow)" />
+    <!-- Placemat Texture Lines -->
+    <polygon points="-2,62 698,22 638,238 -38,278" fill="none" stroke="#E6DDD1" stroke-width="1.5" stroke-dasharray="6,4" />
+
+    <!-- Main Empty Plate (After Meal) -->
+    <g transform="translate(280, 120)" filter="url(#softShadow)">
+      <!-- Outer Rim -->
+      <ellipse cx="0" cy="0" rx="170" ry="75" fill="#FAF8F5" stroke="#E3DACF" stroke-width="3" />
+      <!-- Inner Well -->
+      <ellipse cx="0" cy="2" rx="125" ry="52" fill="#F2ECE4" stroke="#E8DFD5" stroke-width="1.5" />
+
+      <!-- Leftover Crumbs on Plate -->
+      <circle cx="-30" cy="-10" r="2" fill="#C49A6C" />
+      <circle cx="-15" cy="5" r="1.5" fill="#B3895B" />
+      <circle cx="20" cy="-15" r="2.5" fill="#C49A6C" />
+      <circle cx="45" cy="10" r="1.8" fill="#A87E50" />
+      <circle cx="5" cy="18" r="1.2" fill="#B3895B" />
+
+      <!-- Fork resting on plate -->
+      <path d="M-130,-15 L-20,10" stroke="#B0BAC3" stroke-width="4" stroke-linecap="round" />
+      <path d="M-138,-18 Q-120,-10 -110,5" fill="none" stroke="#CBD3DA" stroke-width="3" />
+
+      <!-- Knife resting on plate -->
+      <path d="M-10,25 L100,-5" stroke="#9FAAB5" stroke-width="5" stroke-linecap="round" />
+      <path d="M70,-15 L115,-8 Q100,5 75,5 Z" fill="#DDE3E8" stroke="#B0BAC3" stroke-width="1" />
+    </g>
+
+    <!-- Glass of Water with Date Seed -->
+    <g transform="translate(290, 20)" filter="url(#softShadow)">
+      <!-- Glass Base & Water -->
+      <ellipse cx="0" cy="40" rx="28" ry="12" fill="#DDEBF5" opacity="0.8" />
+      <path d="M-26,0 L-20,40 A28,12 0 0,0 20,40 L26,0 Z" fill="#E8F3FA" opacity="0.6" stroke="#C5DCED" stroke-width="1.5" />
+      <!-- Water Surface -->
+      <ellipse cx="0" cy="10" rx="23" ry="8" fill="#D3E6F5" opacity="0.9" />
+      <!-- Date Seed floating in or beside glass -->
+      <ellipse cx="-2" cy="12" rx="7" ry="4" fill="#604235" />
+      <!-- Glass Top Rim -->
+      <ellipse cx="0" cy="0" rx="26" ry="10" fill="none" stroke="#FFFFFF" stroke-width="2" />
+    </g>
+
+    <!-- Small Wooden Plate with Dates -->
+    <g transform="translate(520, 130)" filter="url(#softShadow)">
+      <ellipse cx="0" cy="0" rx="90" ry="40" fill="#D1BA9E" stroke="#BFA68A" stroke-width="3" />
+      <ellipse cx="0" cy="-2" rx="78" ry="32" fill="#C4AA8B" />
+
+      <!-- Dates Stacked -->
+      <!-- Date 1 -->
+      <ellipse cx="-25" cy="-4" rx="18" ry="10" fill="#54372B" stroke="#3D261E" stroke-width="1" />
+      <path d="M-35,-4 Q-25,-7 -15,-3" stroke="#7A5343" stroke-width="1.5" fill="none" />
+      <!-- Date 2 -->
+      <ellipse cx="5" cy="-8" rx="20" ry="11" fill="#4A2E23" stroke="#362017" stroke-width="1" />
+      <path d="M-5,-9 Q5,-12 15,-7" stroke="#6E4636" stroke-width="1.5" fill="none" />
+      <!-- Date 3 -->
+      <ellipse cx="30" cy="-2" rx="17" ry="9" fill="#5B3C30" stroke="#3D261E" stroke-width="1" />
+      <!-- Date 4 -->
+      <ellipse cx="-5" cy="5" rx="19" ry="10" fill="#3D251C" stroke="#2B1812" stroke-width="1" />
+      <path d="M-15,4 Q-5,1 5,5" stroke="#613D2F" stroke-width="1.5" fill="none" />
+    </g>
+
+    <!-- Small Ceramic Bowl & Spoon (Top Right) -->
+    <g transform="translate(540, 20)" filter="url(#softShadow)">
+      <ellipse cx="0" cy="10" rx="45" ry="22" fill="#F7F3EC" stroke="#E3DACF" stroke-width="2" />
+      <ellipse cx="0" cy="2" rx="38" ry="15" fill="#EAE1D5" />
+      <!-- Spoon in bowl -->
+      <path d="M10,0 L55,-25" stroke="#CBD3DA" stroke-width="3.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Napkin & Small Spoon (Center) -->
+    <g transform="translate(100, 30)" filter="url(#softShadow)">
+      <path d="M-40,25 L30,-10 L70,10 L0,45 Z" fill="#FFFFFF" opacity="0.9" />
+      <!-- Spoon -->
+      <path d="M-20,15 L40,-5" stroke="#B0BAC3" stroke-width="3" stroke-linecap="round" />
+      <ellipse cx="-20" cy="15" rx="10" ry="6" fill="#CBD3DA" />
+    </g>
+  </g>
+
+  <!-- Golden Ambient Dust / Light Sparkles in Sunrise -->
+  <g fill="#FFF8E0" opacity="0.75">
+    <circle cx="220" cy="180" r="3.5" filter="url(#blurLight)" />
+    <circle cx="240" cy="260" r="2" />
+    <circle cx="310" cy="140" r="4" />
+    <circle cx="450" cy="220" r="2.5" />
+    <circle cx="380" cy="340" r="3" />
+    <circle cx="500" cy="300" r="2" filter="url(#blurLight)" />
+    <circle cx="160" cy="420" r="3.5" />
+    <circle cx="280" cy="480" r="2" />
+    <circle cx="600" cy="400" r="3" />
+  </g>
+
+  <!-- Four-Point Star Sparkle in Bottom Right (matching input image detail) -->
+  <g transform="translate(710, 700)" fill="#FFFFFF" opacity="0.8">
+    <path d="M0,-14 Q0,0 14,0 Q0,0 0,14 Q0,0 -14,0 Q0,0 0,-14 Z" />
+  </g>
+</svg>

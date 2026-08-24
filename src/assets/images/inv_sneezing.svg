@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Wall & Room Gradients -->
+    <linearGradient id="wallBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2EBE1" />
+      <stop offset="60%" stop-color="#E8DFD3" />
+      <stop offset="100%" stop-color="#DCD0C1" />
+    </linearGradient>
+
+    <linearGradient id="skyGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E4F0EC" />
+      <stop offset="40%" stop-color="#CBE3F3" />
+      <stop offset="100%" stop-color="#93C5ED" />
+    </linearGradient>
+
+    <linearGradient id="sunBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF7" stop-opacity="0.65" />
+      <stop offset="40%" stop-color="#FFF3DC" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#FFE8C2" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="tableTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ECE1CE" />
+      <stop offset="40%" stop-color="#DECCA8" />
+      <stop offset="100%" stop-color="#CBB48E" />
+    </linearGradient>
+
+    <linearGradient id="woodEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C2AC88" />
+      <stop offset="100%" stop-color="#B09975" />
+    </linearGradient>
+
+    <!-- Glass & Water Gradients -->
+    <linearGradient id="glassBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.7" />
+      <stop offset="20%" stop-color="#EBF4FA" stop-opacity="0.3" />
+      <stop offset="80%" stop-color="#DCECF7" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.8" />
+    </linearGradient>
+
+    <linearGradient id="waterLevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E2F1FB" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#C0DEED" stop-opacity="0.6" />
+    </linearGradient>
+
+    <filter id="softDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#5E4E3C" flood-opacity="0.18" />
+    </filter>
+
+    <filter id="lightBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" />
+    </filter>
+
+    <!-- Arabesque Relief Pattern -->
+    <pattern id="archArabesque" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M40,0 L80,40 L40,80 L0,40 Z" fill="none" stroke="#D3C5B3" stroke-width="1.5" />
+      <circle cx="40" cy="40" r="14" fill="none" stroke="#D3C5B3" stroke-width="1" />
+      <path d="M40,10 Q55,40 40,70 Q25,40 40,10 Z" fill="none" stroke="#C8B8A4" stroke-width="1" />
+      <path d="M10,40 Q40,55 70,40 Q40,25 10,40 Z" fill="none" stroke="#C8B8A4" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Wall Background -->
+  <rect width="800" height="800" fill="url(#wallBg)" />
+
+  <!-- Arabesque Arch Wall Carving (Right Wall Background) -->
+  <g transform="translate(480, 20)">
+    <!-- Arch Outline -->
+    <path d="M20,400 L20,180 Q20,20 180,20 Q340,20 340,180 L340,400 Z" fill="url(#wallBg)" stroke="#D8CABE" stroke-width="6" />
+    <path d="M35,395 L35,185 Q35,35 180,35 Q325,35 325,185 L325,395 Z" fill="url(#archArabesque)" opacity="0.45" />
+    <!-- Arch Moldings -->
+    <path d="M10,405 L10,175 Q10,5 180,5 Q350,5 350,175 L350,405" fill="none" stroke="#DDD0C2" stroke-width="4" />
+  </g>
+
+  <!-- Sofa in Background (Right) -->
+  <g transform="translate(560, 390)" opacity="0.85" filter="url(#softDropShadow)">
+    <!-- Sofa Base & Cushions -->
+    <rect x="0" y="70" width="240" height="100" rx="10" fill="#EAE2D8" stroke="#D5C9BB" stroke-width="2" />
+    <!-- Pillow 1 -->
+    <rect x="10" y="10" width="90" height="80" rx="12" fill="#E2D8CC" stroke="#CFC3B5" stroke-width="1.5" transform="rotate(-5 55 50)" />
+    <!-- Pillow 2 -->
+    <rect x="110" y="10" width="90" height="80" rx="12" fill="#DFD4C6" stroke="#CFC3B5" stroke-width="1.5" transform="rotate(4 155 50)" />
+  </g>
+
+  <!-- Open Window (Left Background) -->
+  <g id="window" transform="translate(30, 10)">
+    <!-- Window Frame Outer -->
+    <rect x="0" y="0" width="310" height="420" rx="10" fill="#FAF6F0" stroke="#E3D7C8" stroke-width="12" filter="url(#softDropShadow)" />
+    
+    <!-- Outside View (Sky, Clouds, Mountain, Trees) -->
+    <rect x="12" y="12" width="286" height="396" rx="6" fill="url(#skyGrad)" />
+    
+    <!-- Soft Clouds -->
+    <ellipse cx="80" cy="80" rx="50" ry="20" fill="#FFFFFF" opacity="0.75" />
+    <ellipse cx="140" cy="70" rx="60" ry="25" fill="#FFFFFF" opacity="0.85" />
+    <ellipse cx="220" cy="90" rx="40" ry="18" fill="#FFFFFF" opacity="0.7" />
+
+    <!-- Distant Soft Hills -->
+    <path d="M12,280 Q90,220 180,260 Q230,240 298,280 L298,408 L12,408 Z" fill="#9CB8A0" opacity="0.5" />
+    <!-- Lush Green Garden Trees -->
+    <path d="M12,408 Q40,300 90,320 Q140,280 200,310 Q250,290 298,330 L298,408 Z" fill="#6A8E6D" />
+    <path d="M30,408 Q70,330 120,350 Q170,310 230,340 Q270,320 298,360 L298,408 Z" fill="#587A5B" opacity="0.8" />
+
+    <!-- Window Pane Divider Grid (Closed Left Pane, Open Right Sash Pane) -->
+    <!-- Left Fixed Glass Grid -->
+    <rect x="12" y="12" width="138" height="396" fill="none" stroke="#E3D7C8" stroke-width="6" />
+    <line x1="12" y1="144" x2="150" y2="144" stroke="#E3D7C8" stroke-width="5" />
+    <line x1="12" y1="276" x2="150" y2="276" stroke="#E3D7C8" stroke-width="5" />
+
+    <!-- Right Window Sash Open Swing Out -->
+    <g transform="translate(150, 12)">
+      <polygon points="0,0 120,30 120,366 0,396" fill="url(#skyGrad)" opacity="0.3" stroke="#FAF6F0" stroke-width="8" />
+      <line x1="0" y1="132" x2="120" y2="145" stroke="#FAF6F0" stroke-width="5" />
+      <line x1="0" y1="264" x2="120" y2="272" stroke="#FAF6F0" stroke-width="5" />
+    </g>
+  </g>
+
+  <!-- Flowing Sheer White Curtains in Window Breeze -->
+  <g opacity="0.85">
+    <path d="M360,0 Q420,160 510,320 Q440,260 380,500 L320,500 Q380,220 340,0 Z" fill="#FFFFFF" opacity="0.75" />
+    <path d="M380,0 Q450,180 540,330 Q460,270 410,500 L360,500 Q410,230 360,0 Z" fill="#F8FAFC" opacity="0.45" />
+  </g>
+
+  <!-- Volumetric Golden Sunlight Rays -->
+  <polygon points="120,20 800,400 800,750 0,750 0,350" fill="url(#sunBeam)" />
+  <polygon points="180,20 800,320 800,550 0,220" fill="url(#sunBeam)" opacity="0.6" />
+
+  <!-- Wooden Table Surface (Foreground) -->
+  <g id="table">
+    <!-- Table Top Perspective Surface -->
+    <path d="M0,520 L800,520 L800,800 L0,800 Z" fill="url(#tableTop)" filter="url(#softDropShadow)" />
+    
+    <!-- Table Beveled Front Edge Rim -->
+    <path d="M0,520 L800,520 L800,538 L0,538 Z" fill="#D2BD9B" />
+    <path d="M0,538 L800,538 L800,544 L0,544 Z" fill="url(#woodEdge)" />
+    
+    <!-- Subtle Wood Grain Lines -->
+    <path d="M50,560 Q300,545 750,560" stroke="#C0A983" stroke-width="1.5" fill="none" opacity="0.4" />
+    <path d="M0,620 Q400,600 800,620" stroke="#C0A983" stroke-width="1.5" fill="none" opacity="0.35" />
+    <path d="M0,710 Q400,690 800,710" stroke="#B8A07A" stroke-width="2" fill="none" opacity="0.3" />
+  </g>
+
+  <!-- Main Items on Table: Folded White Napkin / Handkerchief & Glass of Water with Eucalyptus Leaf -->
+
+  <!-- Item 1: Folded White Napkin (Tissue / Handkerchief) on Left -->
+  <g id="napkin" transform="translate(140, 550)" filter="url(#softDropShadow)">
+    <!-- Bottom Shadow / Fold layer -->
+    <path d="M10,70 Q90,110 240,85 Q340,65 380,75 Q320,115 190,125 Q80,135 10,70 Z" fill="#DCD3C5" />
+    <!-- Main Layer Soft Folded Cloth -->
+    <path d="M30,40 Q130,20 280,50 Q360,65 370,80 Q290,110 180,115 Q60,120 0,65 Q10,45 30,40 Z" fill="#FAF8F5" stroke="#E3DACD" stroke-width="1.5" />
+    <!-- Secondary Elegant Fold Curve -->
+    <path d="M40,42 Q140,85 270,60 Q340,50 360,75 Q280,105 170,108 Q60,110 25,60 Z" fill="#FFFFFF" stroke="#E8E0D5" stroke-width="1" />
+    <!-- Top Ripple / Fold Highlight -->
+    <path d="M60,40 Q160,80 250,55" stroke="#F0E8DD" stroke-width="3" fill="none" />
+    <!-- Hem Stitches along napkin edge -->
+    <path d="M35,45 Q130,26 275,54" stroke="#D8CEBF" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+  </g>
+
+  <!-- Item 2: Clear Glass of Water on Right -->
+  <g id="glass" transform="translate(510, 520)" filter="url(#softDropShadow)">
+    <!-- Outer Glass Shadow on Wood -->
+    <ellipse cx="55" cy="180" rx="58" ry="18" fill="#9E8A72" opacity="0.3" />
+
+    <!-- Glass Body Outline & Fill -->
+    <path d="M5,10 L18,170 A42,12 0 0,0 92,170 L105,10 Z" fill="url(#glassBody)" stroke="#FFFFFF" stroke-width="2" />
+
+    <!-- Water Inside Glass -->
+    <path d="M12,65 L18,168 A38,10 0 0,0 92,168 L98,65 Z" fill="url(#waterLevel)" />
+    <!-- Water Surface Line & Refraction Oval -->
+    <ellipse cx="55" cy="65" rx="43" ry="10" fill="#EBF6FC" stroke="#C4E0F2" stroke-width="2" opacity="0.9" />
+
+    <!-- Glass Highlights & Caustic Reflections -->
+    <path d="M12,20 L20,160" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.8" />
+    <path d="M98,20 L92,160" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <ellipse cx="55" cy="172" rx="35" ry="8" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7" />
+
+    <!-- Glass Top Rim -->
+    <ellipse cx="55" cy="10" rx="50" ry="12" fill="none" stroke="#FFFFFF" stroke-width="3" />
+    <ellipse cx="55" cy="10" rx="48" ry="10" fill="none" stroke="#D3E6F5" stroke-width="1.5" />
+  </g>
+
+  <!-- Item 3: Eucalyptus Branch Lying Beside Glass -->
+  <g id="eucalyptus" transform="translate(570, 580)" filter="url(#softDropShadow)">
+    <!-- Main Thin Stem -->
+    <path d="M0,90 Q90,50 190,40" stroke="#7A8C74" stroke-width="3" stroke-linecap="round" fill="none" />
+
+    <!-- Leaf Pair 1 (Near Base) -->
+    <path d="M30,80 Q20,60 40,55 Q55,70 30,80 Z" fill="#8FA489" stroke="#6C8066" stroke-width="1" />
+    <path d="M35,82 Q45,100 65,90 Q60,75 35,82 Z" fill="#7E9478" stroke="#6C8066" stroke-width="1" />
+
+    <!-- Leaf Pair 2 (Mid Stem) -->
+    <path d="M80,68 Q75,40 100,42 Q105,62 80,68 Z" fill="#99AD93" stroke="#6C8066" stroke-width="1" />
+    <path d="M85,70 Q100,90 120,80 Q110,65 85,70 Z" fill="#84997E" stroke="#6C8066" stroke-width="1" />
+
+    <!-- Leaf Pair 3 (Upper Stem) -->
+    <path d="M130,55 Q130,30 152,38 Q150,55 130,55 Z" fill="#A3B89D" stroke="#6C8066" stroke-width="1" />
+    <path d="M135,58 Q155,72 170,60 Q158,48 135,58 Z" fill="#8FA489" stroke="#6C8066" stroke-width="1" />
+
+    <!-- Tip Leaf -->
+    <path d="M180,42 Q200,30 205,42 Q190,52 180,42 Z" fill="#A3B89D" stroke="#6C8066" stroke-width="1" />
+  </g>
+
+  <!-- Floating Golden Dust Particles in Sunrise Light -->
+  <g fill="#FFF5D6" opacity="0.8">
+    <circle cx="280" cy="220" r="3" filter="url(#lightBlur)" />
+    <circle cx="340" cy="180" r="2" />
+    <circle cx="410" cy="260" r="4" />
+    <circle cx="460" cy="210" r="2.5" />
+    <circle cx="520" cy="310" r="3" />
+    <circle cx="390" cy="380" r="3.5" filter="url(#lightBlur)" />
+    <circle cx="480" cy="420" r="2" />
+    <circle cx="560" cy="370" r="2.5" />
+    <circle cx="310" cy="440" r="3" />
+    <circle cx="430" cy="490" r="4" />
+    <circle cx="220" cy="320" r="2" />
+  </g>
+
+  <!-- Four-Pointed Star Sparkle (Matching bottom right watermark style from user photo) -->
+  <g transform="translate(700, 690)" fill="#FFFFFF" opacity="0.85">
+    <path d="M0,-16 Q0,0 16,0 Q0,0 0,16 Q0,0 -16,0 Q0,0 0,-16 Z" />
+  </g>
+
+  <!-- Soft Warm Glow Ambient Overlay -->
+  <rect width="800" height="800" fill="#FFE8C2" opacity="0.05" pointer-events="none" />
+</svg>
